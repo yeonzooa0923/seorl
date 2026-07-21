@@ -656,7 +656,7 @@
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, doc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
         /* Firebase Configuration */
@@ -748,27 +748,14 @@
             try { localStorage.setItem('seori_' + key, JSON.stringify(val)); } catch(e){}
         }
 
-        /* Clean object serialization helper for Firestore */
-        function cleanFirestoreObject(val) {
-            if (val === undefined || val === null) return null;
-            if (typeof val === 'boolean' || typeof val === 'string') return val;
-            if (typeof val === 'number') {
-                return (isNaN(val) || !isFinite(val)) ? 0 : val;
-            }
-            if (Array.isArray(val)) {
-                return val.map(item => cleanFirestoreObject(item)).filter(item => item !== undefined && item !== null);
-            }
-            if (typeof val === 'object') {
-                const cleaned = {};
-                for (const k of Object.keys(val)) {
-                    const v = val[k];
-                    if (v !== undefined && typeof v !== 'function') {
-                        cleaned[k] = cleanFirestoreObject(v);
-                    }
-                }
-                return cleaned;
-            }
-            return String(val);
+        /* Clean object serialization helper for Firestore (Prevents Invalid Nested Entity Errors) */
+        function sanitizeData(data) {
+            if (data === undefined || data === null) return null;
+            return JSON.parse(JSON.stringify(data, (key, value) => {
+                if (value === undefined) return null;
+                if (typeof value === 'number' && (isNaN(value) || !isFinite(value))) return 0;
+                return value;
+            }));
         }
 
         function getCleanProfileData(raw) {
@@ -800,17 +787,17 @@
 
         async function syncDataToFirestore(key, value) {
             if (key === 'profile') {
-                globalProfileData = cleanFirestoreObject(getCleanProfileData(value));
+                globalProfileData = sanitizeData(getCleanProfileData(value));
             } else if (key === 'notice') {
-                globalNoticeData = cleanFirestoreObject(value);
+                globalNoticeData = sanitizeData(value);
             } else if (key === 'schedule') {
-                globalScheduleData = cleanFirestoreObject(value);
+                globalScheduleData = sanitizeData(value);
             } else if (key === 'bangsell') {
-                globalBangsellData = cleanFirestoreObject(value);
+                globalBangsellData = sanitizeData(value);
             } else if (key === 'songbook') {
-                globalSongbookData = cleanFirestoreObject(value);
+                globalSongbookData = sanitizeData(value);
             } else if (key === 'upbo') {
-                globalUpboData = cleanFirestoreObject(value);
+                globalUpboData = sanitizeData(value);
             }
 
             setStorage(key, value);
@@ -819,14 +806,14 @@
 
             try {
                 const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'siteData', 'mainDoc');
-                const fullPayload = {
-                    profile: cleanFirestoreObject(getCleanProfileData(globalProfileData)),
-                    notice: cleanFirestoreObject(globalNoticeData),
-                    schedule: cleanFirestoreObject(globalScheduleData),
-                    bangsell: cleanFirestoreObject(globalBangsellData),
-                    songbook: cleanFirestoreObject(globalSongbookData),
-                    upbo: cleanFirestoreObject(globalUpboData)
-                };
+                const fullPayload = sanitizeData({
+                    profile: getCleanProfileData(globalProfileData),
+                    notice: globalNoticeData,
+                    schedule: globalScheduleData,
+                    bangsell: globalBangsellData,
+                    songbook: globalSongbookData,
+                    upbo: globalUpboData
+                });
                 await setDoc(docRef, fullPayload);
             } catch (err) {
                 console.error("Firestore sync error:", err);
@@ -838,23 +825,23 @@
             onSnapshot(docRef, (docSnap) => {
                 if (docSnap.exists()) {
                     const data = docSnap.data();
-                    if (data.profile) { globalProfileData = cleanFirestoreObject(getCleanProfileData(data.profile)); setStorage('profile', globalProfileData); }
-                    if (data.notice) { globalNoticeData = cleanFirestoreObject(data.notice); setStorage('notice', globalNoticeData); }
-                    if (data.schedule) { globalScheduleData = cleanFirestoreObject(data.schedule); setStorage('schedule', globalScheduleData); }
-                    if (data.bangsell) { globalBangsellData = cleanFirestoreObject(data.bangsell); setStorage('bangsell', globalBangsellData); }
-                    if (data.songbook) { globalSongbookData = cleanFirestoreObject(data.songbook); setStorage('songbook', globalSongbookData); }
-                    if (data.upbo) { globalUpboData = cleanFirestoreObject(data.upbo); setStorage('upbo', globalUpboData); }
+                    if (data.profile) { globalProfileData = sanitizeData(getCleanProfileData(data.profile)); setStorage('profile', globalProfileData); }
+                    if (data.notice) { globalNoticeData = sanitizeData(data.notice); setStorage('notice', globalNoticeData); }
+                    if (data.schedule) { globalScheduleData = sanitizeData(data.schedule); setStorage('schedule', globalScheduleData); }
+                    if (data.bangsell) { globalBangsellData = sanitizeData(data.bangsell); setStorage('bangsell', globalBangsellData); }
+                    if (data.songbook) { globalSongbookData = sanitizeData(data.songbook); setStorage('songbook', globalSongbookData); }
+                    if (data.upbo) { globalUpboData = sanitizeData(data.upbo); setStorage('upbo', globalUpboData); }
                     
                     renderAllViews();
                 } else {
-                    const initialPayload = {
-                        profile: cleanFirestoreObject(getCleanProfileData(globalProfileData)),
-                        notice: cleanFirestoreObject(globalNoticeData),
-                        schedule: cleanFirestoreObject(globalScheduleData),
-                        bangsell: cleanFirestoreObject(globalBangsellData),
-                        songbook: cleanFirestoreObject(globalSongbookData),
-                        upbo: cleanFirestoreObject(globalUpboData)
-                    };
+                    const initialPayload = sanitizeData({
+                        profile: getCleanProfileData(globalProfileData),
+                        notice: globalNoticeData,
+                        schedule: globalScheduleData,
+                        bangsell: globalBangsellData,
+                        songbook: globalSongbookData,
+                        upbo: globalUpboData
+                    });
                     setDoc(docRef, initialPayload);
                 }
             }, (error) => {
@@ -863,12 +850,12 @@
         }
 
         function loadLocalData() {
-            globalProfileData = cleanFirestoreObject(getCleanProfileData(getStorage('profile', defaultProfileData)));
-            globalNoticeData = cleanFirestoreObject(getStorage('notice', defaultNoticeData));
-            globalScheduleData = cleanFirestoreObject(getStorage('schedule', defaultScheduleData));
-            globalBangsellData = cleanFirestoreObject(getStorage('bangsell', defaultBangsellData));
-            globalSongbookData = cleanFirestoreObject(getStorage('songbook', defaultSongbookData));
-            globalUpboData = cleanFirestoreObject(getStorage('upbo', defaultUpboData));
+            globalProfileData = sanitizeData(getCleanProfileData(getStorage('profile', defaultProfileData)));
+            globalNoticeData = sanitizeData(getStorage('notice', defaultNoticeData));
+            globalScheduleData = sanitizeData(getStorage('schedule', defaultScheduleData));
+            globalBangsellData = sanitizeData(getStorage('bangsell', defaultBangsellData));
+            globalSongbookData = sanitizeData(getStorage('songbook', defaultSongbookData));
+            globalUpboData = sanitizeData(getStorage('upbo', defaultUpboData));
         }
 
         function showToast(msg) {
@@ -1522,7 +1509,11 @@
             generateParticles();
 
             try {
-                await signInAnonymously(auth);
+                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                    await signInWithCustomToken(auth, __initial_auth_token);
+                } else {
+                    await signInAnonymously(auth);
+                }
                 isAuthReady = true;
                 setupFirestoreListener();
             } catch (e) {
