@@ -767,12 +767,19 @@
             try { localStorage.setItem('seori_' + key, JSON.stringify(val)); } catch(e){}
         }
 
+        // Firestore에서 undefined 필드로 인한 invalid nested entity 오류 방지용 정제 함수
+        function sanitizeData(data) {
+            if (data === undefined) return null;
+            return JSON.parse(JSON.stringify(data));
+        }
+
         async function syncDataToFirestore(key, value) {
-            setStorage(key, value);
+            const cleanValue = sanitizeData(value);
+            setStorage(key, cleanValue);
             if (!isAuthReady) return;
             try {
                 const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'siteData', 'mainDoc');
-                await setDoc(docRef, { [key]: value }, { merge: true });
+                await setDoc(docRef, { [key]: cleanValue }, { merge: true });
             } catch (err) {
                 console.error("Firestore sync error:", err);
             }
@@ -792,15 +799,15 @@
                     
                     renderAllViews();
                 } else {
-                    // Initialize cloud document with defaults
-                    setDoc(docRef, {
+                    // Initialize cloud document with cleaned defaults
+                    setDoc(docRef, sanitizeData({
                         profile: globalProfileData,
                         notice: globalNoticeData,
                         schedule: globalScheduleData,
                         bangsell: globalBangsellData,
                         songbook: globalSongbookData,
                         upbo: globalUpboData
-                    });
+                    }));
                 }
             }, (error) => {
                 console.warn("Firestore listener fallback to local state:", error);
