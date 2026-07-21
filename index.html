@@ -661,14 +661,31 @@
         </div>
     </footer>
 
-    <script>
-        // Default Data Structures for 올어바웃 설이
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // Firebase Configuration provided
+        const userFirebaseConfig = {
+            apiKey: "AIzaSyCekmbU-9jnjvn5xgaGxUNTZESIZvA3zoM",
+            authDomain: "seorl-88bb8.firebaseapp.com",
+            projectId: "seorl-88bb8",
+            storageBucket: "seorl-88bb8.firebasestorage.app",
+            messagingSenderId: "911702869034",
+            appId: "1:911702869034:web:e637dfae939f8eb0ca6f53"
+        };
+
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : userFirebaseConfig;
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'seorl-88bb8';
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
         const defaultProfileData = {
             bannerUrl: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1200&auto=format&fit=crop",
-            introText: `안녕하세요! 올어바웃 설이 방송국에 오신 설령님들을 환영합니다! ❤️👻
-매일 매일 함께 소통하며 즐거운 추억을 만들어가요.
-노래와 저챗, 게임까지 다채로운 이야기로 찾아뵙겠습니다.
-많은 관심과 사랑 부탁드립니다!`,
+            introText: `안녕하세요! 올어바웃 설이 방송국에 오신 설령님들을 환영합니다! ❤️👻\n매일 매일 함께 소통하며 즐거운 추억을 만들어가요.\n노래와 저챗, 게임까지 다채로운 이야기로 찾아뵙겠습니다.\n많은 관심과 사랑 부탁드립니다!`,
             tags: ["올어바웃설이", "설령", "버추얼", "노래방송"],
             ddays: [
                 { title: "🎂 생일", type: "birthday", date: "03-28" },
@@ -697,7 +714,6 @@
             { title: "고스트 고딕 머리핀", category: "헤어", description: "귀여운 유령 포인트 장식 머리핀 👻", url: "https://placehold.co/400x500/12141d/B10E1E?text=Ghost+Hairpin" }
         ];
 
-        // Songbook with mastery (1-5 red hearts) and custom category
         const defaultSongbookData = [
             { title: "First Love", artist: "Utada Hikaru", genre: "J-POP", mastery: 5 },
             { title: "너의 모든 순간", artist: "성시경", genre: "발라드", mastery: 4 },
@@ -708,7 +724,6 @@
             { title: "Good-bye Days", artist: "YUI", genre: "J-POP", mastery: 4 }
         ];
 
-        // Upbo (Karma) default data
         const defaultUpboData = [
             { id: "dougie0328", nickname: "열혈설령이", items: [{ name: "움짤 방셀", count: 1 }, { name: "1:1 음성 메시지", count: 1 }] },
             { id: "", nickname: "체리유령👻", items: [{ name: "네컷 방셀", count: 2 }, { name: "모닝콜 음성", count: 1 }] },
@@ -727,6 +742,7 @@
         let selectedGenre = 'ALL';
         let tempBangsellBase64 = "";
         let currentEditingUpboUserIndex = null;
+        let isAuthReady = false;
 
         function getStorage(key, def) {
             try {
@@ -738,8 +754,47 @@
             try { localStorage.setItem('seori_' + key, JSON.stringify(val)); } catch(e){}
         }
 
-        // Load all state
-        function loadAllData() {
+        async function syncDataToFirestore(key, value) {
+            setStorage(key, value);
+            if (!isAuthReady) return;
+            try {
+                const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'siteData', 'mainDoc');
+                await setDoc(docRef, { [key]: value }, { merge: true });
+            } catch (err) {
+                console.error("Firestore sync error:", err);
+            }
+        }
+
+        function setupFirestoreListener() {
+            const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'siteData', 'mainDoc');
+            onSnapshot(docRef, (docSnap) => {
+                if (docSnap.exists()) {
+                    const data = docSnap.data();
+                    if (data.profile) { globalProfileData = data.profile; setStorage('profile', data.profile); }
+                    if (data.notice) { globalNoticeData = data.notice; setStorage('notice', data.notice); }
+                    if (data.schedule) { globalScheduleData = data.schedule; setStorage('schedule', data.schedule); }
+                    if (data.bangsell) { globalBangsellData = data.bangsell; setStorage('bangsell', data.bangsell); }
+                    if (data.songbook) { globalSongbookData = data.songbook; setStorage('songbook', data.songbook); }
+                    if (data.upbo) { globalUpboData = data.upbo; setStorage('upbo', data.upbo); }
+                    
+                    renderAllViews();
+                } else {
+                    // Initialize cloud document with defaults
+                    setDoc(docRef, {
+                        profile: globalProfileData,
+                        notice: globalNoticeData,
+                        schedule: globalScheduleData,
+                        bangsell: globalBangsellData,
+                        songbook: globalSongbookData,
+                        upbo: globalUpboData
+                    });
+                }
+            }, (error) => {
+                console.warn("Firestore listener fallback to local state:", error);
+            });
+        }
+
+        function loadLocalData() {
             globalProfileData = getStorage('profile', defaultProfileData);
             globalNoticeData = getStorage('notice', defaultNoticeData);
             globalScheduleData = getStorage('schedule', defaultScheduleData);
@@ -748,7 +803,15 @@
             globalUpboData = getStorage('upbo', defaultUpboData);
         }
 
-        // Particle Generators (Red Heart, White Heart, Ghost)
+        function renderAllViews() {
+            renderProfile();
+            renderNotice();
+            renderSchedule();
+            renderBangsell();
+            renderSongbook();
+            renderUpbo();
+        }
+
         function createParticles() {
             const container = document.getElementById('heart-bg-effects');
             if(!container) return;
@@ -768,10 +831,10 @@
             }, 550);
         }
 
-        // Toast Helper
         function showToast(msg) {
             const toast = document.getElementById('toast-message');
             const txt = document.getElementById('toast-text');
+            if(!toast || !txt) return;
             txt.innerText = msg;
             toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
             setTimeout(() => {
@@ -788,7 +851,6 @@
                 `<span class="px-3 py-1 bg-[#12141d] border border-[#232838] text-[#DDE2EA] text-xs rounded-full">#${t.trim()}</span>`
             ).join('');
 
-            // D-Days Render
             const ddayCont = document.getElementById('dday-container');
             ddayCont.innerHTML = '';
             (globalProfileData.ddays || []).forEach(d => {
@@ -894,7 +956,6 @@
             });
         }
 
-        // Lightbox image viewer
         function openImageLightbox(url, title) {
             document.getElementById('lightbox-img').src = url;
             document.getElementById('lightbox-title').textContent = title;
@@ -910,7 +971,6 @@
             const tabsCont = document.getElementById('song-genre-tabs');
             if(!tabsCont) return;
 
-            // Extract unique custom genres/categories
             const categories = Array.from(new Set(globalSongbookData.map(s => s.genre || '기타').filter(Boolean)));
             
             let tabsHtml = `
@@ -930,7 +990,7 @@
         function renderSongbook() {
             renderSongbookCategoryTabs();
             const body = document.getElementById('songbook-list-body');
-            const searchKw = document.getElementById('song-search-input').value.toLowerCase().trim();
+            const searchKw = (document.getElementById('song-search-input')?.value || '').toLowerCase().trim();
             body.innerHTML = '';
 
             const filtered = globalSongbookData.filter(s => {
@@ -949,7 +1009,6 @@
             }
 
             filtered.forEach(s => {
-                // Generate 1 to 5 Red Hearts for Mastery Rating
                 const masteryCount = Math.max(1, Math.min(5, parseInt(s.mastery || 3, 10)));
                 const heartsStr = '❤️'.repeat(masteryCount);
 
@@ -985,7 +1044,7 @@
             if (!grid) return;
             grid.innerHTML = '';
 
-            const searchKw = document.getElementById('upbo-search-input').value.toLowerCase().trim();
+            const searchKw = (document.getElementById('upbo-search-input')?.value || '').toLowerCase().trim();
 
             const filtered = globalUpboData.filter(u => 
                 (u.nickname || '').toLowerCase().includes(searchKw) ||
@@ -1121,7 +1180,6 @@
             renderUpbo();
         }
 
-        // Profile Editing Logic
         function openProfileEditModal() {
             document.getElementById('edit-profile-banner').value = globalProfileData.bannerUrl || '';
             document.getElementById('edit-profile-intro').value = globalProfileData.introText || '';
@@ -1141,7 +1199,7 @@
             globalProfileData.introText = document.getElementById('edit-profile-intro').value.trim();
             globalProfileData.tags = document.getElementById('edit-profile-tags').value.split(',').map(t => t.trim()).filter(t=>t!=='');
             
-            setStorage('profile', globalProfileData);
+            syncDataToFirestore('profile', globalProfileData);
             renderProfile();
             closeProfileEditModal();
             showToast("프로필 수정이 반영되었습니다!");
@@ -1177,7 +1235,7 @@
             const dateStr = `${now.getFullYear()}.${String(now.getMonth()+1).padStart(2,'0')}.${String(now.getDate()).padStart(2,'0')}`;
 
             globalNoticeData.unshift({ type, date: dateStr, content, link });
-            setStorage('notice', globalNoticeData);
+            syncDataToFirestore('notice', globalNoticeData);
             document.getElementById('new-notice-content').value = '';
             document.getElementById('new-notice-link').value = '';
             renderNoticeEditList();
@@ -1186,12 +1244,11 @@
         }
         function deleteNotice(idx) {
             globalNoticeData.splice(idx, 1);
-            setStorage('notice', globalNoticeData);
+            syncDataToFirestore('notice', globalNoticeData);
             renderNoticeEditList();
             renderNotice();
         }
 
-        // Schedule Editing Logic
         function openScheduleEditModal() {
             renderScheduleEditList();
             const modal = document.getElementById('schedule-edit-modal');
@@ -1220,7 +1277,7 @@
                 s.content = document.getElementById(`sched-input-${i}`).value;
                 s.isRest = document.getElementById(`sched-rest-${i}`).checked;
             });
-            setStorage('schedule', globalScheduleData);
+            syncDataToFirestore('schedule', globalScheduleData);
             renderSchedule();
             closeScheduleEditModal();
             showToast("주간 일정이 저장되었습니다.");
@@ -1257,7 +1314,6 @@
             `).join('');
         }
 
-        // Handle local file selection (PNG supported with transparency)
         function handleBangsellFileSelected(input) {
             const file = input.files[0];
             if (!file) return;
@@ -1286,7 +1342,7 @@
             }
 
             globalBangsellData.unshift({ title, category, description, url });
-            setStorage('bangsell', globalBangsellData);
+            syncDataToFirestore('bangsell', globalBangsellData);
             
             document.getElementById('new-bs-title').value = '';
             document.getElementById('new-bs-desc').value = '';
@@ -1301,7 +1357,7 @@
         }
         function deleteBangsell(idx) {
             globalBangsellData.splice(idx, 1);
-            setStorage('bangsell', globalBangsellData);
+            syncDataToFirestore('bangsell', globalBangsellData);
             renderBangsellEditList();
             renderBangsell();
         }
@@ -1340,7 +1396,7 @@
             if(!title) return;
 
             globalSongbookData.unshift({ genre, title, artist, mastery });
-            setStorage('songbook', globalSongbookData);
+            syncDataToFirestore('songbook', globalSongbookData);
             
             document.getElementById('new-song-title').value = '';
             document.getElementById('new-song-artist').value = '';
@@ -1350,7 +1406,7 @@
         }
         function deleteSong(idx) {
             globalSongbookData.splice(idx, 1);
-            setStorage('songbook', globalSongbookData);
+            syncDataToFirestore('songbook', globalSongbookData);
             renderSongEditList();
             renderSongbook();
         }
@@ -1376,7 +1432,7 @@
             }
 
             globalUpboData.unshift({ id, nickname, items: [] });
-            setStorage('upbo', globalUpboData);
+            syncDataToFirestore('upbo', globalUpboData);
             closeAddUpboUserModal();
             renderUpbo();
             showToast(`새 팬/설령이 (${nickname})님 업보가 등록되었습니다.`);
@@ -1441,7 +1497,7 @@
             if(currentEditingUpboUserIndex === null) return;
             const items = globalUpboData[currentEditingUpboUserIndex].items;
             items[itemIdx].count = Math.max(0, (parseInt(items[itemIdx].count) || 0) + delta);
-            setStorage('upbo', globalUpboData);
+            syncDataToFirestore('upbo', globalUpboData);
             renderUpboEditItemsList();
             renderUpbo();
         }
@@ -1449,7 +1505,7 @@
         function deleteUpboItem(itemIdx) {
             if(currentEditingUpboUserIndex === null) return;
             globalUpboData[currentEditingUpboUserIndex].items.splice(itemIdx, 1);
-            setStorage('upbo', globalUpboData);
+            syncDataToFirestore('upbo', globalUpboData);
             renderUpboEditItemsList();
             renderUpbo();
         }
@@ -1468,7 +1524,7 @@
                 items.push({ name, count: 1 });
             }
 
-            setStorage('upbo', globalUpboData);
+            syncDataToFirestore('upbo', globalUpboData);
             input.value = '';
             renderUpboEditItemsList();
             renderUpbo();
@@ -1478,22 +1534,54 @@
         function deleteCurrentUpboUser() {
             if(currentEditingUpboUserIndex === null) return;
             globalUpboData.splice(currentEditingUpboUserIndex, 1);
-            setStorage('upbo', globalUpboData);
+            syncDataToFirestore('upbo', globalUpboData);
             closeUpboEditModal();
             renderUpbo();
             showToast("사용자가 삭제되었습니다.");
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            loadAllData();
-            createParticles();
+        window.openAdminLoginModal = openAdminLoginModal;
+        window.closeAdminLoginModal = closeAdminLoginModal;
+        window.checkAdminPin = checkAdminPin;
+        window.openProfileEditModal = openProfileEditModal;
+        window.closeProfileEditModal = closeProfileEditModal;
+        window.saveProfileChanges = saveProfileChanges;
+        window.openNoticeEditModal = openNoticeEditModal;
+        window.closeNoticeEditModal = closeNoticeEditModal;
+        window.addNewNotice = addNewNotice;
+        window.deleteNotice = deleteNotice;
+        window.openScheduleEditModal = openScheduleEditModal;
+        window.closeScheduleEditModal = closeScheduleEditModal;
+        window.saveScheduleChanges = saveScheduleChanges;
+        window.openBangsellEditModal = openBangsellEditModal;
+        window.closeBangsellEditModal = closeBangsellEditModal;
+        window.handleBangsellFileSelected = handleBangsellFileSelected;
+        window.addNewBangsell = addNewBangsell;
+        window.deleteBangsell = deleteBangsell;
+        window.openSongEditModal = openSongEditModal;
+        window.closeSongEditModal = closeSongEditModal;
+        window.addNewSong = addNewSong;
+        window.deleteSong = deleteSong;
+        window.openUpboDetailModal = openUpboDetailModal;
+        window.closeUpboDetailModal = closeUpboDetailModal;
+        window.openAddUpboUserModal = openAddUpboUserModal;
+        window.closeAddUpboUserModal = closeAddUpboUserModal;
+        window.submitNewUpboUser = submitNewUpboUser;
+        window.openUpboEditModal = openUpboEditModal;
+        window.closeUpboEditModal = closeUpboEditModal;
+        window.addUpboItemToUser = addUpboItemToUser;
+        window.changeUpboCount = changeUpboCount;
+        window.deleteUpboItem = deleteUpboItem;
+        window.deleteCurrentUpboUser = deleteCurrentUpboUser;
+        window.openImageLightbox = openImageLightbox;
+        window.closeImageLightbox = closeImageLightbox;
+        window.filterSongGenre = filterSongGenre;
+        window.clickUpboUserCard = clickUpboUserCard;
 
-            renderProfile();
-            renderNotice();
-            renderSchedule();
-            renderBangsell();
-            renderSongbook();
-            renderUpbo();
+        document.addEventListener('DOMContentLoaded', async () => {
+            loadLocalData();
+            createParticles();
+            renderAllViews();
 
             // Mobile Menu Toggle
             const mobileBtn = document.getElementById('mobile-menu-btn');
@@ -1503,16 +1591,21 @@
                 });
             }
 
-            // Song Search Event
-            const songSearch = document.getElementById('song-search-input');
-            if(songSearch) {
-                songSearch.addEventListener('input', renderSongbook);
-            }
+            // Search inputs
+            document.getElementById('song-search-input')?.addEventListener('input', renderSongbook);
+            document.getElementById('upbo-search-input')?.addEventListener('input', renderUpbo);
 
-            // Upbo Search Event
-            const upboSearch = document.getElementById('upbo-search-input');
-            if(upboSearch) {
-                upboSearch.addEventListener('input', renderUpbo);
+            // Firebase Authentication & Firestore Listener
+            try {
+                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                    await signInWithCustomToken(auth, __initial_auth_token);
+                } else {
+                    await signInAnonymously(auth);
+                }
+                isAuthReady = true;
+                setupFirestoreListener();
+            } catch(err) {
+                console.warn("Firebase Auth / Sync fallback to local storage:", err);
             }
         });
     </script>
