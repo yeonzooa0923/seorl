@@ -1,0 +1,1520 @@
+<!DOCTYPE html>
+<html lang="ko" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>올어바웃 설이 프로필 ❤️👻</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="https://stimg.afreecatv.com/LOGO/do/dougie0328/dougie0328.jpg" type="image/jpeg">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Cinzel:wght@700;900&family=Noto+Sans+KR:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Noto Sans KR', 'Gowun Dodum', 'sans-serif'],
+                        title: ['Cinzel', 'Noto Sans KR', 'sans-serif'],
+                        dodum: ['Gowun Dodum', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            crimson: '#B10E1E',
+                            red: '#FF2E4D',
+                            darkred: '#7A0812',
+                            silver: '#DDE2EA',
+                            coolgray: '#8C9BAE',
+                            darkbg: '#0a0b10',
+                            cardbg: '#12141d',
+                            cardborder: '#232838',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Noto Sans KR', 'Gowun Dodum', sans-serif;
+            background-color: #0a0b10;
+            color: #DDE2EA;
+            letter-spacing: -0.02em;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0a0b10; }
+        ::-webkit-scrollbar-thumb { background: #B10E1E; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #FF2E4D; }
+
+        /* Sleek Card Hover Effect */
+        .glow-card {
+            background: linear-gradient(145deg, rgba(18, 20, 29, 0.95), rgba(15, 17, 24, 0.98));
+            border: 1px solid rgba(221, 226, 234, 0.12);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
+            transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .glow-card:hover {
+            border-color: rgba(177, 14, 30, 0.5);
+            box-shadow: 0 15px 35px -5px rgba(177, 14, 30, 0.25);
+        }
+
+        /* Particle Falling Animation */
+        .heart-particle {
+            position: absolute;
+            pointer-events: none;
+            animation: fall linear forwards;
+        }
+        @keyframes fall {
+            0% {
+                transform: translateY(-20px) rotate(0deg);
+                opacity: 0.85;
+            }
+            100% {
+                transform: translateY(105vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Red Accent Text Glow */
+        .text-glow-red {
+            text-shadow: 0 0 12px rgba(255, 46, 77, 0.5);
+        }
+
+        /* Button Pulse */
+        .btn-glow {
+            box-shadow: 0 0 15px rgba(177, 14, 30, 0.4);
+            transition: all 0.3s ease;
+        }
+        .btn-glow:hover {
+            box-shadow: 0 0 25px rgba(255, 46, 77, 0.7);
+            transform: translateY(-2px);
+        }
+
+        /* PNG preview background (pattern removed) */
+        .png-bg-pattern {
+            background: transparent;
+        }
+    </style>
+</head>
+<body class="bg-[#0a0b10] text-[#DDE2EA] antialiased min-h-screen flex flex-col relative overflow-x-hidden">
+
+    <div class="fixed inset-0 pointer-events-none overflow-hidden z-0 opacity-40" id="heart-bg-effects"></div>
+
+    <header class="bg-[#0a0b10]/90 backdrop-blur-md sticky top-0 z-50 border-b border-[#232838]">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <span class="w-10 h-10 rounded-full bg-[#12141d] border border-[#B10E1E] flex items-center justify-center text-xl shadow-[0_0_10px_rgba(177,14,30,0.5)] group-hover:scale-105 transition-transform">
+                        👻
+                    </span>
+                    <div class="flex flex-col">
+                        <span class="font-title text-xl font-extrabold tracking-wider text-white group-hover:text-[#FF2E4D] transition-colors">ALL ABOUT SEORI</span>
+                        <span class="text-[10px] text-[#8C9BAE] tracking-widest uppercase font-bold">올어바웃 설이 공식 프로필</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden md:flex items-center space-x-1 lg:space-x-2 text-xs font-bold">
+                    <a href="#profile" class="px-3 py-2 rounded-xl text-[#DDE2EA] hover:text-white hover:bg-[#12141d] transition-all">프로필</a>
+                    <a href="#notice" class="px-3 py-2 rounded-xl text-[#DDE2EA] hover:text-white hover:bg-[#12141d] transition-all">공지사항</a>
+                    <a href="#schedule" class="px-3 py-2 rounded-xl text-[#DDE2EA] hover:text-white hover:bg-[#12141d] transition-all">일정</a>
+                    <a href="#bangsell" class="px-3 py-2 rounded-xl text-[#DDE2EA] hover:text-white hover:bg-[#12141d] transition-all">이달의 방셀</a>
+                    <a href="#songbook" class="px-3 py-2 rounded-xl text-[#DDE2EA] hover:text-white hover:bg-[#12141d] transition-all">노래책</a>
+                    <a href="#upbo" class="px-3 py-2 rounded-xl text-[#DDE2EA] hover:text-white hover:bg-[#12141d] transition-all">업보 현황</a>
+                    
+                    <button onclick="openAdminLoginModal()" class="ml-2 p-2.5 rounded-xl bg-[#12141d] border border-[#232838] hover:border-[#B10E1E] text-[#8C9BAE] hover:text-[#FF2E4D] transition-all" title="관리자 모드">
+                        <i class="fa-solid fa-lock"></i>
+                    </button>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center gap-2">
+                    <button onclick="openAdminLoginModal()" class="p-2 bg-[#12141d] border border-[#232838] rounded-lg text-[#8C9BAE] hover:text-[#FF2E4D]">
+                        <i class="fa-solid fa-lock text-sm"></i>
+                    </button>
+                    <button id="mobile-menu-btn" class="p-2 text-[#DDE2EA] hover:text-white focus:outline-none">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[#0d0f14] border-b border-[#232838] px-4 py-3 space-y-1 text-sm font-bold">
+            <a href="#profile" class="block px-3 py-2 rounded-lg text-[#DDE2EA] hover:bg-[#12141d] hover:text-[#FF2E4D]">프로필 & 자기소개</a>
+            <a href="#notice" class="block px-3 py-2 rounded-lg text-[#DDE2EA] hover:bg-[#12141d] hover:text-[#FF2E4D]">공지사항</a>
+            <a href="#schedule" class="block px-3 py-2 rounded-lg text-[#DDE2EA] hover:bg-[#12141d] hover:text-[#FF2E4D]">주간 일정</a>
+            <a href="#bangsell" class="block px-3 py-2 rounded-lg text-[#DDE2EA] hover:bg-[#12141d] hover:text-[#FF2E4D]">이달의 방셀</a>
+            <a href="#songbook" class="block px-3 py-2 rounded-lg text-[#DDE2EA] hover:bg-[#12141d] hover:text-[#FF2E4D]">노래책 (Songbook)</a>
+            <a href="#upbo" class="block px-3 py-2 rounded-lg text-[#DDE2EA] hover:bg-[#12141d] hover:text-[#FF2E4D]">업보 현황</a>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="flex-grow w-full max-w-5xl mx-auto px-4 sm:px-6 py-8 space-y-12 relative z-10">
+
+        <section id="profile" class="scroll-mt-24 space-y-6">
+            
+            <!-- Banner & Avatar Card -->
+            <div class="glow-card rounded-3xl overflow-hidden relative">
+                <!-- Cover Image -->
+                <div class="h-44 sm:h-64 w-full relative overflow-hidden bg-gradient-to-r from-[#12141d] via-[#1a080c] to-[#0a0b10]">
+                    <img id="profile-banner-img" src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1200&auto=format&fit=crop" 
+                         class="w-full h-full object-cover opacity-60 mix-blend-luminosity" alt="설이 프로필 배너">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#12141d] via-transparent to-black/40"></div>
+                </div>
+
+                <!-- Main Info Container -->
+                <div class="px-6 sm:px-10 pb-8 relative flex flex-col sm:flex-row items-center sm:items-end gap-6 -mt-20 sm:-mt-24">
+                    
+                    <!-- Avatar Photo (Removed text overlay above profile) -->
+                    <div class="relative group flex-shrink-0">
+                        <div class="w-32 h-32 sm:w-44 sm:h-44 rounded-full border-4 border-[#B10E1E] p-1 bg-[#0a0b10] shadow-[0_0_25px_rgba(177,14,30,0.6)] overflow-hidden">
+                            <img src="https://stimg.afreecatv.com/LOGO/do/dougie0328/dougie0328.jpg" 
+                                 onerror="this.src='https://placehold.co/400x400/12141d/DDE2EA?text=Seori'" 
+                                 class="w-full h-full object-cover rounded-full group-hover:scale-105 transition-transform duration-500" alt="올어바웃 설이 아바타">
+                        </div>
+                    </div>
+
+                    <!-- Details -->
+                    <div class="flex-grow text-center sm:text-left space-y-3">
+                        <div class="flex flex-wrap items-center justify-center sm:justify-start gap-2">
+                            <span class="px-3 py-1 bg-[#B10E1E]/20 text-[#FF2E4D] border border-[#B10E1E]/40 text-xs font-extrabold rounded-full">
+                                Virtual Creator ❤️
+                            </span>
+                            <span class="px-3 py-1 bg-[#1c2230] text-[#DDE2EA] text-xs font-bold rounded-full border border-[#232838]">
+                                팬닉: <strong class="text-white">설령</strong> 👻
+                            </span>
+                        </div>
+
+                        <div>
+                            <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight flex items-center justify-center sm:justify-start gap-3">
+                                올어바웃 설이
+                                <span class="text-xs sm:text-sm text-[#8C9BAE] font-normal tracking-normal font-dodum">Seori Profile</span>
+                            </h1>
+                        </div>
+
+                        <!-- Stats Row -->
+                        <div class="flex flex-wrap justify-center sm:justify-start gap-4 text-xs font-semibold text-[#8C9BAE]">
+                            <div class="flex items-center gap-1.5"><i class="fa-solid fa-cake-candles text-[#FF2E4D]"></i> 생일 : <span class="text-white">03월 28일</span></div>
+                            <div class="flex items-center gap-1.5"><i class="fa-solid fa-star text-[#FF2E4D]"></i> 데뷔일 : <span class="text-white">2024년 05월 28일</span></div>
+                        </div>
+
+                        <!-- Social Links Buttons -->
+                        <div class="pt-2 flex flex-wrap justify-center sm:justify-start gap-2">
+                            <a href="https://www.sooplive.com/station/dougie0328" target="_blank" class="px-3 py-2 bg-[#0042a5]/30 hover:bg-[#0042a5]/60 border border-[#0052cc]/50 text-white rounded-xl text-xs font-bold flex items-center gap-2 transition-all hover:scale-105">
+                                <i class="fa-solid fa-tv text-sky-400"></i> SOOP
+                            </a>
+                            <a href="https://youtube.com/@allabout_seori?si=mgmrssFoLkmBFrwn" target="_blank" class="px-3 py-2 bg-[#B10E1E]/30 hover:bg-[#B10E1E]/60 border border-[#B10E1E]/50 text-white rounded-xl text-xs font-bold flex items-center gap-2 transition-all hover:scale-105">
+                                <i class="fa-brands fa-youtube text-red-500"></i> 유튜브
+                            </a>
+                            <a href="https://youtube.com/@lalala_seori?si=LWBiwRzAcLkJgIjJ" target="_blank" class="px-3 py-2 bg-[#7A0812]/30 hover:bg-[#7A0812]/60 border border-[#FF2E4D]/40 text-white rounded-xl text-xs font-bold flex items-center gap-2 transition-all hover:scale-105">
+                                <i class="fa-solid fa-music text-rose-400"></i> 노래유튜브
+                            </a>
+                            <a href="https://cafe.naver.com/allaboutseori0328" target="_blank" class="px-3 py-2 bg-[#03c75a]/20 hover:bg-[#03c75a]/40 border border-[#03c75a]/40 text-white rounded-xl text-xs font-bold flex items-center gap-2 transition-all hover:scale-105">
+                                <i class="fa-solid fa-mug-hot text-emerald-400"></i> 공식카페
+                            </a>
+                            <a href="https://fancimm.com/profile/821481" target="_blank" class="px-3 py-2 bg-[#e91e63]/20 hover:bg-[#e91e63]/40 border border-[#e91e63]/40 text-white rounded-xl text-xs font-bold flex items-center gap-2 transition-all hover:scale-105">
+                                <i class="fa-solid fa-heart text-pink-400"></i> 팬심M
+                            </a>
+                            <a href="https://fancimm.com/celebrity/225208" target="_blank" class="px-3 py-2 bg-[#9c27b0]/20 hover:bg-[#9c27b0]/40 border border-[#9c27b0]/40 text-white rounded-xl text-xs font-bold flex items-center gap-2 transition-all hover:scale-105">
+                                <i class="fa-solid fa-gift text-purple-400"></i> 팬심
+                            </a>
+                            <a href="https://meloming.com/channel/all_about_seori" target="_blank" class="px-3 py-2 bg-[#3f51b5]/20 hover:bg-[#3f51b5]/40 border border-[#3f51b5]/40 text-white rounded-xl text-xs font-bold flex items-center gap-2 transition-all hover:scale-105">
+                                <i class="fa-solid fa-headphones text-indigo-300"></i> 멜로밍
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Self Intro & D-Day Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Self Intro Card -->
+                <div class="glow-card rounded-3xl p-6 flex flex-col justify-between relative">
+                    <div>
+                        <div class="flex items-center justify-between mb-4 border-b border-[#232838] pb-3">
+                            <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                                <span class="text-[#FF2E4D]">👻</span> 자기소개
+                            </h3>
+                            <button id="admin-profile-edit-btn" onclick="openProfileEditModal()" class="hidden text-[#8C9BAE] hover:text-[#FF2E4D] transition-colors p-1" title="수정">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                        </div>
+                        <p id="profile-intro-text" class="text-sm text-[#DDE2EA] leading-relaxed whitespace-pre-wrap font-medium">
+                            <!-- JS Dynamic Content -->
+                        </p>
+                    </div>
+
+                    <div id="profile-tags-container" class="flex flex-wrap gap-2 pt-4 mt-6 border-t border-[#232838]">
+                        <!-- Tags rendered by JS -->
+                    </div>
+                </div>
+
+                <!-- Anniversary / D-Day Card -->
+                <div class="glow-card rounded-3xl p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4 border-b border-[#232838] pb-3">
+                            <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                                <span class="text-[#FF2E4D]">❤️</span> 기념일 & 디데이
+                            </h3>
+                        </div>
+                        <div id="dday-container" class="space-y-3">
+                            <!-- D-Days rendered by JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Notice Section -->
+            <section id="notice" class="scroll-mt-24">
+                <div class="glow-card rounded-3xl p-6 h-full flex flex-col">
+                    <div class="flex items-center justify-between mb-4 border-b border-[#232838] pb-3">
+                        <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-bullhorn text-[#FF2E4D]"></i> 공지사항
+                        </h2>
+                        <button id="admin-notice-edit-btn" onclick="openNoticeEditModal()" class="hidden text-[#8C9BAE] hover:text-[#FF2E4D] p-1" title="공지사항 관리">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </button>
+                    </div>
+                    <ul id="notice-list" class="space-y-3 flex-grow">
+                        <!-- JS dynamic notices -->
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Weekly Schedule Section -->
+            <section id="schedule" class="scroll-mt-24">
+                <div class="glow-card rounded-3xl p-6 h-full flex flex-col">
+                    <div class="flex items-center justify-between mb-4 border-b border-[#232838] pb-3">
+                        <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-calendar-days text-[#FF2E4D]"></i> 주간 일정
+                        </h2>
+                        <button id="admin-schedule-edit-btn" onclick="openScheduleEditModal()" class="hidden text-[#8C9BAE] hover:text-[#FF2E4D] p-1" title="일정 관리">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </button>
+                    </div>
+                    <div id="schedule-list" class="space-y-2.5 flex-grow">
+                        <!-- JS dynamic schedule -->
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <section id="bangsell" class="scroll-mt-24">
+            <div class="glow-card rounded-3xl p-6 sm:p-8">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-[#232838] pb-4 mb-6 gap-3">
+                    <div>
+                        <span class="text-[#FF2E4D] text-xs font-bold tracking-widest uppercase block mb-1">BANGSELL CATALOG</span>
+                        <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+                            <span>👗</span> 이달의 방셀
+                        </h2>
+                    </div>
+                    <button id="admin-bangsell-edit-btn" onclick="openBangsellEditModal()" class="hidden text-xs bg-[#B10E1E]/20 text-[#FF2E4D] border border-[#B10E1E]/40 hover:bg-[#B10E1E]/40 font-bold px-4 py-2 rounded-xl transition-all self-start sm:self-auto">
+                        <i class="fa-solid fa-pen-to-square mr-1"></i>방셀 관리
+                    </button>
+                </div>
+
+                <div id="bangsell-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <!-- JS Dynamic Bangsell Rendering -->
+                </div>
+            </div>
+        </section>
+
+        <section id="songbook" class="scroll-mt-24">
+            <div class="glow-card rounded-3xl p-6 sm:p-8">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-[#232838] pb-4 mb-6 gap-4">
+                    <div>
+                        <span class="text-[#FF2E4D] text-xs font-bold tracking-widest uppercase block mb-1">SEORI REPERTOIRE</span>
+                        <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-compact-disc text-[#FF2E4D]"></i> 노래책 (Songbook)
+                        </h2>
+                    </div>
+                    <button id="admin-song-edit-btn" onclick="openSongEditModal()" class="hidden text-xs bg-[#B10E1E]/20 text-[#FF2E4D] border border-[#B10E1E]/40 hover:bg-[#B10E1E]/40 font-bold px-4 py-2 rounded-xl transition-all self-start sm:self-auto">
+                        <i class="fa-solid fa-music mr-1"></i>노래 관리/추가
+                    </button>
+                </div>
+
+                <!-- Search and Genre Filters -->
+                <div class="flex flex-col sm:flex-row gap-3 mb-6">
+                    <div class="relative flex-grow">
+                        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-[#8C9BAE]"></i>
+                        <input type="text" id="song-search-input" class="w-full bg-[#0a0b10] border border-[#232838] text-white text-sm rounded-2xl pl-11 pr-4 py-3 outline-none focus:border-[#B10E1E] transition-colors" placeholder="곡 제목, 가수, 카테고리 검색...">
+                    </div>
+                    <div id="song-genre-tabs" class="flex flex-wrap gap-1.5 overflow-x-auto pb-1">
+                        <!-- JS dynamic category tabs -->
+                    </div>
+                </div>
+
+                <!-- Songs Table/List -->
+                <div class="bg-[#0a0b10] rounded-2xl border border-[#232838] overflow-hidden">
+                    <div class="max-h-96 overflow-y-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead class="bg-[#12141d] text-[#8C9BAE] text-xs font-bold sticky top-0 border-b border-[#232838] z-10">
+                                <tr>
+                                    <th class="p-3.5 pl-5">카테고리</th>
+                                    <th class="p-3.5">곡 제목</th>
+                                    <th class="p-3.5">가수</th>
+                                    <th class="p-3.5 text-right pr-5">숙련도</th>
+                                </tr>
+                            </thead>
+                            <tbody id="songbook-list-body" class="divide-y divide-[#232838]/60 text-sm">
+                                <!-- JS Dynamic songs -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="upbo" class="scroll-mt-24">
+            <div class="glow-card rounded-3xl p-6 sm:p-8">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-[#232838] pb-4 mb-6 gap-3">
+                    <div>
+                        <span class="text-[#FF2E4D] text-xs font-bold tracking-widest uppercase block mb-1">SEORI FAN KARMA</span>
+                        <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+                            <span>📜</span> 업보 현황
+                        </h2>
+                    </div>
+                    <button id="admin-upbo-add-user-btn" onclick="openAddUpboUserModal()" class="hidden text-xs bg-[#B10E1E]/20 text-[#FF2E4D] border border-[#B10E1E]/40 hover:bg-[#B10E1E]/40 font-bold px-4 py-2 rounded-xl transition-all self-start sm:self-auto">
+                        <i class="fa-solid fa-user-plus mr-1"></i>설령이 추가
+                    </button>
+                </div>
+
+                <!-- Search Filter -->
+                <div class="relative mb-6">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-[#8C9BAE]"></i>
+                    <input type="text" id="upbo-search-input" class="w-full bg-[#0a0b10] border border-[#232838] text-white text-sm rounded-2xl pl-11 pr-4 py-3 outline-none focus:border-[#B10E1E] transition-colors" placeholder="설령이 닉네임 또는 SOOP ID 검색...">
+                </div>
+
+                <!-- Karma Grid Container -->
+                <div id="upbo-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <!-- JS Dynamic Upbo User Cards -->
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- Admin Password Modal -->
+    <div id="admin-login-modal" class="fixed inset-0 z-[110] flex items-center justify-center bg-black/75 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300">
+        <div class="glow-card rounded-3xl w-11/12 max-w-sm p-6 transform scale-95 transition-all duration-300 border border-[#B10E1E]">
+            <h3 class="text-xl font-bold text-white mb-2 flex items-center gap-2">
+                <i class="fa-solid fa-lock text-[#FF2E4D]"></i> 관리자 로그인
+            </h3>
+            <p class="text-xs text-[#8C9BAE] mb-4">설이 매니저 비밀번호를 입력해주세요.</p>
+            <input type="password" id="admin-pin-input" class="w-full bg-[#0a0b10] border border-[#232838] text-white text-center rounded-2xl p-3 mb-4 outline-none focus:border-[#B10E1E] font-bold text-lg tracking-widest" placeholder="PIN 입력">
+            <div class="flex justify-end gap-2">
+                <button onclick="closeAdminLoginModal()" class="px-4 py-2 rounded-xl bg-[#232838] text-white text-xs font-bold hover:bg-[#2c3348] transition-colors">취소</button>
+                <button onclick="checkAdminPin()" class="px-5 py-2 rounded-xl bg-[#B10E1E] text-white text-xs font-bold hover:bg-[#FF2E4D] transition-colors">확인</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Profile Edit Modal -->
+    <div id="profile-edit-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/75 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300">
+        <div class="glow-card rounded-3xl w-11/12 max-w-lg p-6 transform scale-95 transition-all duration-300 max-h-[85vh] flex flex-col">
+            <div class="flex justify-between items-center pb-4 border-b border-[#232838] mb-4">
+                <h3 class="text-lg font-bold text-white">프로필 & 소개 정보 수정</h3>
+                <button onclick="closeProfileEditModal()" class="text-[#8C9BAE] hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            <div class="space-y-4 overflow-y-auto flex-grow pr-1">
+                <div>
+                    <label class="block text-xs font-bold text-[#8C9BAE] mb-1">상단 배너 이미지 URL</label>
+                    <input type="text" id="edit-profile-banner" class="w-full bg-[#0a0b10] border border-[#232838] text-white text-xs rounded-xl p-3 outline-none focus:border-[#B10E1E]">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-[#8C9BAE] mb-1">자기소개 글</label>
+                    <textarea id="edit-profile-intro" rows="4" class="w-full bg-[#0a0b10] border border-[#232838] text-white text-xs rounded-xl p-3 outline-none focus:border-[#B10E1E] resize-none"></textarea>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-[#8C9BAE] mb-1">해시태그 (쉼표 구분)</label>
+                    <input type="text" id="edit-profile-tags" class="w-full bg-[#0a0b10] border border-[#232838] text-white text-xs rounded-xl p-3 outline-none focus:border-[#B10E1E]">
+                </div>
+            </div>
+            <div class="pt-4 border-t border-[#232838] mt-4 flex justify-end gap-2">
+                <button onclick="closeProfileEditModal()" class="px-4 py-2 rounded-xl bg-[#232838] text-white text-xs font-bold">취소</button>
+                <button onclick="saveProfileChanges()" class="px-5 py-2 rounded-xl bg-[#B10E1E] text-white text-xs font-bold hover:bg-[#FF2E4D]">저장</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notice Edit Modal -->
+    <div id="notice-edit-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/75 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300">
+        <div class="glow-card rounded-3xl w-11/12 max-w-md p-6 transform scale-95 transition-all duration-300 max-h-[85vh] flex flex-col">
+            <div class="flex justify-between items-center pb-4 border-b border-[#232838] mb-4">
+                <h3 class="text-lg font-bold text-white">공지사항 관리</h3>
+                <button onclick="closeNoticeEditModal()" class="text-[#8C9BAE] hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            <div id="notice-edit-list" class="space-y-2 overflow-y-auto flex-grow mb-4"></div>
+            <div class="space-y-2 pt-3 border-t border-[#232838]">
+                <div class="flex gap-2">
+                    <select id="new-notice-type" class="bg-[#0a0b10] border border-[#232838] text-white text-xs rounded-xl p-2 outline-none">
+                        <option value="필독">필독</option>
+                        <option value="안내">안내</option>
+                        <option value="일반">일반</option>
+                    </select>
+                    <input type="text" id="new-notice-content" class="flex-grow bg-[#0a0b10] border border-[#232838] text-white text-xs rounded-xl p-2 outline-none" placeholder="공지 내용">
+                </div>
+                <div class="flex gap-2">
+                    <input type="text" id="new-notice-link" class="flex-grow bg-[#0a0b10] border border-[#232838] text-white text-xs rounded-xl p-2 outline-none" placeholder="링크 (선택)">
+                    <button onclick="addNewNotice()" class="px-4 py-2 bg-[#B10E1E] text-white text-xs font-bold rounded-xl whitespace-nowrap">추가</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Schedule Edit Modal -->
+    <div id="schedule-edit-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/75 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300">
+        <div class="glow-card rounded-3xl w-11/12 max-w-sm p-6 transform scale-95 transition-all duration-300 max-h-[85vh] flex flex-col">
+            <div class="flex justify-between items-center pb-4 border-b border-[#232838] mb-4">
+                <h3 class="text-lg font-bold text-white">주간 일정 수정</h3>
+                <button onclick="closeScheduleEditModal()" class="text-[#8C9BAE] hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            <div id="schedule-edit-list" class="space-y-2 overflow-y-auto flex-grow mb-4"></div>
+            <button onclick="saveScheduleChanges()" class="w-full py-2.5 bg-[#B10E1E] text-white text-xs font-bold rounded-xl hover:bg-[#FF2E4D]">일정 저장</button>
+        </div>
+    </div>
+
+    <!-- Bangsell Edit Modal (Supports local PNG file upload + transparent background preview) -->
+    <div id="bangsell-edit-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/75 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300">
+        <div class="glow-card rounded-3xl w-11/12 max-w-md p-6 transform scale-95 transition-all duration-300 max-h-[85vh] flex flex-col">
+            <div class="flex justify-between items-center pb-4 border-b border-[#232838] mb-4">
+                <h3 class="text-lg font-bold text-white">이달의 방셀 카탈로그 관리</h3>
+                <button onclick="closeBangsellEditModal()" class="text-[#8C9BAE] hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            <div id="bangsell-edit-list" class="space-y-3 overflow-y-auto flex-grow mb-4 pr-1"></div>
+            
+            <div class="pt-3 border-t border-[#232838] space-y-2">
+                <div class="grid grid-cols-2 gap-2">
+                    <input type="text" id="new-bs-title" class="bg-[#0a0b10] border border-[#232838] text-white text-xs rounded-xl p-2 outline-none focus:border-[#B10E1E]" placeholder="의상/아이템명">
+                    <select id="new-bs-cat" class="bg-[#0a0b10] border border-[#232838] text-white text-xs rounded-xl p-2 outline-none focus:border-[#B10E1E]">
+                        <option value="의상">의상 👗</option>
+                        <option value="헤어">헤어 🎀</option>
+                        <option value="세트">세트 ✨</option>
+                    </select>
+                </div>
+                <input type="text" id="new-bs-desc" class="w-full bg-[#0a0b10] border border-[#232838] text-white text-xs rounded-xl p-2 outline-none focus:border-[#B10E1E]" placeholder="설명 / 미션 조건">
+                
+                <!-- PNG Image Upload Option -->
+                <div class="p-3 bg-[#0a0b10] border border-[#232838] rounded-xl space-y-2">
+                    <div class="flex items-center justify-between">
+                        <label class="text-[11px] font-bold text-[#8C9BAE] flex items-center gap-1">
+                            <i class="fa-solid fa-image text-[#FF2E4D]"></i> 이미지는 파일(PNG transparent 권장) 또는 URL
+                        </label>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <label class="flex-grow bg-[#12141d] hover:bg-[#1c2230] border border-dashed border-[#B10E1E]/50 text-white text-xs p-2 rounded-xl text-center cursor-pointer transition-colors flex items-center justify-center gap-1.5">
+                            <i class="fa-solid fa-file-arrow-up text-[#FF2E4D]"></i>
+                            <span id="bs-file-label-text">PNG/이미지 파일 찾기</span>
+                            <input type="file" id="new-bs-file" accept="image/png, image/*" class="hidden" onchange="handleBangsellFileSelected(this)">
+                        </label>
+                    </div>
+                    <input type="text" id="new-bs-url" class="w-full bg-[#0a0b10] border border-[#232838] text-white text-xs rounded-xl p-2 outline-none focus:border-[#B10E1E]" placeholder="또는 이미지 URL 직접 입력">
+                </div>
+
+                <button onclick="addNewBangsell()" class="w-full py-2.5 bg-[#B10E1E] text-white text-xs font-bold rounded-xl hover:bg-[#FF2E4D] transition-colors">새 방셀 추가</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Song Edit Modal (Custom Category & Red Hearts Mastery Rating) -->
+    <div id="song-edit-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/75 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300">
+        <div class="glow-card rounded-3xl w-11/12 max-w-md p-6 transform scale-95 transition-all duration-300 max-h-[85vh] flex flex-col">
+            <div class="flex justify-between items-center pb-4 border-b border-[#232838] mb-4">
+                <h3 class="text-lg font-bold text-white">노래책 곡 관리</h3>
+                <button onclick="closeSongEditModal()" class="text-[#8C9BAE] hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            <div id="song-edit-list" class="space-y-2 overflow-y-auto flex-grow mb-4 pr-1"></div>
+            
+            <div class="pt-3 border-t border-[#232838] space-y-2.5">
+                <div class="grid grid-cols-2 gap-2">
+                    <div>
+                        <label class="block text-[10px] text-[#8C9BAE] font-bold mb-1">카테고리 (직접 입력)</label>
+                        <input type="text" id="new-song-genre" class="w-full bg-[#0a0b10] border border-[#232838] text-white text-xs rounded-xl p-2 outline-none focus:border-[#B10E1E]" placeholder="예: 발라드, J-POP, 댄스">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] text-[#8C9BAE] font-bold mb-1">숙련도 (하트 1~5개)</label>
+                        <select id="new-song-mastery" class="w-full bg-[#0a0b10] border border-[#232838] text-white text-xs rounded-xl p-2 outline-none focus:border-[#B10E1E]">
+                            <option value="5">❤️❤️❤️❤️❤️ (5개 - 완벽)</option>
+                            <option value="4">❤️❤️❤️❤️ (4개 - 자신있음)</option>
+                            <option value="3">❤️❤️❤️ (3개 - 가능)</option>
+                            <option value="2">❤️❤️ (2개 - 연습중)</option>
+                            <option value="1">❤️ (1개 - 찍먹)</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <input type="text" id="new-song-title" class="w-full bg-[#0a0b10] border border-[#232838] text-white text-xs rounded-xl p-2 outline-none focus:border-[#B10E1E]" placeholder="곡 제목">
+                </div>
+                <div class="flex gap-2">
+                    <input type="text" id="new-song-artist" class="flex-grow bg-[#0a0b10] border border-[#232838] text-white text-xs rounded-xl p-2 outline-none focus:border-[#B10E1E]" placeholder="가수명">
+                    <button onclick="addNewSong()" class="px-4 py-2 bg-[#B10E1E] text-white text-xs font-bold rounded-xl whitespace-nowrap hover:bg-[#FF2E4D]">곡 추가</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Upbo Detail Modal (Public View) -->
+    <div id="upbo-detail-modal" class="fixed inset-0 z-[110] flex items-center justify-center bg-black/75 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300">
+        <div class="glow-card rounded-3xl w-11/12 max-w-sm p-6 transform scale-95 transition-all duration-300 border border-[#232838]">
+            <div class="flex justify-between items-center pb-3 border-b border-[#232838] mb-4">
+                <div class="flex items-center gap-3" id="upbo-user-modal-header"></div>
+                <button onclick="closeUpboDetailModal()" class="text-[#8C9BAE] hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            <div id="upbo-user-items-list" class="space-y-2 max-h-60 overflow-y-auto mb-2"></div>
+        </div>
+    </div>
+
+    <!-- Add Upbo User Modal (Admin) -->
+    <div id="upbo-add-user-modal" class="fixed inset-0 z-[110] flex items-center justify-center bg-black/75 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300">
+        <div class="glow-card rounded-3xl w-11/12 max-w-sm p-6 transform scale-95 transition-all duration-300 border border-[#B10E1E]">
+            <div class="flex justify-between items-center pb-3 border-b border-[#232838] mb-4">
+                <h3 class="text-base font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-user-plus text-[#FF2E4D]"></i> 새 설령이 업보 추가
+                </h3>
+                <button onclick="closeAddUpboUserModal()" class="text-[#8C9BAE] hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            <div class="space-y-3 mb-4">
+                <div>
+                    <label class="block text-xs text-[#8C9BAE] font-bold mb-1">SOOP 아이디 (선택 - 프로필 사진 연동)</label>
+                    <input type="text" id="new-upbo-id" class="w-full bg-[#0a0b10] border border-[#232838] text-white text-xs rounded-xl p-2.5 outline-none focus:border-[#B10E1E]" placeholder="예: dougie0328">
+                </div>
+                <div>
+                    <label class="block text-xs text-[#8C9BAE] font-bold mb-1">닉네임 (필수)</label>
+                    <input type="text" id="new-upbo-nick" class="w-full bg-[#0a0b10] border border-[#232838] text-white text-xs rounded-xl p-2.5 outline-none focus:border-[#B10E1E]" placeholder="닉네임 입력">
+                </div>
+            </div>
+            <div class="flex justify-end gap-2">
+                <button onclick="closeAddUpboUserModal()" class="px-4 py-2 rounded-xl bg-[#232838] text-white text-xs font-bold">취소</button>
+                <button onclick="submitNewUpboUser()" class="px-5 py-2 rounded-xl bg-[#B10E1E] text-white text-xs font-bold hover:bg-[#FF2E4D]">추가</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Upbo Edit Modal (Admin) -->
+    <div id="upbo-edit-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/75 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300">
+        <div class="glow-card rounded-3xl w-11/12 max-w-md p-6 transform scale-95 transition-all duration-300 max-h-[85vh] flex flex-col">
+            <div class="flex justify-between items-center pb-4 border-b border-[#232838] mb-4">
+                <div class="flex items-center gap-3" id="upbo-edit-header"></div>
+                <div class="flex items-center gap-2">
+                    <button onclick="deleteCurrentUpboUser()" class="text-xs bg-red-950/40 border border-red-800 text-red-400 font-bold px-3 py-1 rounded-xl hover:bg-red-900/60" title="이 사용자 삭제">
+                        <i class="fa-solid fa-trash mr-1"></i>삭제
+                    </button>
+                    <button onclick="closeUpboEditModal()" class="text-[#8C9BAE] hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+                </div>
+            </div>
+            
+            <div id="upbo-edit-items-list" class="space-y-2 overflow-y-auto flex-grow mb-4 pr-1"></div>
+            
+            <div class="pt-3 border-t border-[#232838] flex gap-2">
+                <input type="text" id="new-upbo-item-name" class="flex-grow bg-[#0a0b10] border border-[#232838] text-white text-xs rounded-xl p-2.5 outline-none focus:border-[#B10E1E]" placeholder="추가할 업보 항목 (예: 짤방셀, 노래권)">
+                <button onclick="addUpboItemToUser()" class="px-4 py-2.5 bg-[#B10E1E] text-white text-xs font-bold rounded-xl whitespace-nowrap hover:bg-[#FF2E4D]">추가</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Lightbox Modal for Bangsell Preview -->
+    <div id="image-lightbox-modal" class="fixed inset-0 z-[130] flex items-center justify-center bg-black/85 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300" onclick="closeImageLightbox()">
+        <div class="max-w-md w-11/12 text-center relative p-2" onclick="event.stopPropagation()">
+            <button class="absolute -top-10 right-0 text-white hover:text-[#FF2E4D] text-2xl" onclick="closeImageLightbox()"><i class="fa-solid fa-xmark"></i></button>
+            <div class="p-2 rounded-2xl bg-[#12141d] border border-[#232838] shadow-2xl png-bg-pattern inline-block max-w-full">
+                <img id="lightbox-img" src="" class="max-h-[75vh] mx-auto rounded-xl object-contain">
+            </div>
+            <h3 id="lightbox-title" class="text-white text-base font-bold mt-4"></h3>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast-message" class="fixed bottom-6 right-6 z-[150] bg-[#B10E1E] text-white font-bold text-xs py-3 px-5 rounded-2xl shadow-2xl transform translate-y-20 opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-2 border border-[#FF2E4D]">
+        <span id="toast-text">변경 사항이 반영되었습니다! ❤️</span>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-[#07080c] text-[#8C9BAE] py-8 text-center mt-auto border-t border-[#232838] relative z-10">
+        <div class="max-w-5xl mx-auto px-4 space-y-2">
+            <p class="text-sm font-bold text-white flex items-center justify-center gap-2">
+                <span>❤️</span> 올어바웃 설이 (All About Seori) <span>👻</span>
+            </p>
+            <p class="text-xs">© 2026 올어바웃 설이. All rights reserved.</p>
+            <p class="text-xs text-white font-bold font-dodum tracking-wide mt-1 animate-pulse">made by. 연주아🍀</p>
+        </div>
+    </footer>
+
+    <script>
+        // Default Data Structures for 올어바웃 설이
+        const defaultProfileData = {
+            bannerUrl: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1200&auto=format&fit=crop",
+            introText: `안녕하세요! 올어바웃 설이 방송국에 오신 설령님들을 환영합니다! ❤️👻
+매일 매일 함께 소통하며 즐거운 추억을 만들어가요.
+노래와 저챗, 게임까지 다채로운 이야기로 찾아뵙겠습니다.
+많은 관심과 사랑 부탁드립니다!`,
+            tags: ["올어바웃설이", "설령", "버추얼", "노래방송"],
+            ddays: [
+                { title: "🎂 생일", type: "birthday", date: "03-28" },
+                { title: "❤️ 데뷔일", type: "anniversary", date: "2024-05-28" }
+            ]
+        };
+
+        const defaultNoticeData = [
+            { type: "필독", date: "2026.07.20", content: "설이 팬심 및 공식 카페 리뉴얼 안내드립니다! ❤️", link: "https://cafe.naver.com/allaboutseori0328" },
+            { type: "안내", date: "2026.07.18", content: "노래 유튜브에 신규 커버곡 업로드 완료! 🎵", link: "https://youtube.com/@lalala_seori?si=LWBiwRzAcLkJgIjJ" }
+        ];
+
+        const defaultScheduleData = [
+            { day: "월", content: "저챗 & 설령이들과 수다 타임 ❤️", isRest: false },
+            { day: "화", content: "종합 게임 스트리밍 🎮", isRest: false },
+            { day: "수", content: "정기 휴방 💤 (재충전 데이)", isRest: true },
+            { day: "목", content: "노래 방송 & 신청곡 받아줄게! 🎤", isRest: false },
+            { day: "금", content: "시청자 참여 컨텐츠 ✨", isRest: false },
+            { day: "토", content: "랜덤 컨텐츠 방송 🔥", isRest: false },
+            { day: "일", content: "주간 후기 & 라디오 👻", isRest: false }
+        ];
+
+        const defaultBangsellData = [
+            { title: "다크 크림슨 드레스", category: "의상", description: "설이 매력 폭발 시그니처 레더 세트 ❤️", url: "https://placehold.co/400x500/12141d/FF2E4D?text=Crimson+Dress" },
+            { title: "실버 블랙 세일러 룩", category: "의상", description: "차갑고 성숙한 블루실버 포인트 스티치 🤍", url: "https://placehold.co/400x500/12141d/DDE2EA?text=Silver+Sailor" },
+            { title: "고스트 고딕 머리핀", category: "헤어", description: "귀여운 유령 포인트 장식 머리핀 👻", url: "https://placehold.co/400x500/12141d/B10E1E?text=Ghost+Hairpin" }
+        ];
+
+        // Songbook with mastery (1-5 red hearts) and custom category
+        const defaultSongbookData = [
+            { title: "First Love", artist: "Utada Hikaru", genre: "J-POP", mastery: 5 },
+            { title: "너의 모든 순간", artist: "성시경", genre: "발라드", mastery: 4 },
+            { title: "사건의 지평선", artist: "윤하", genre: "발라드", mastery: 5 },
+            { title: "주저하는 연인들을 위해", artist: "잔나비", genre: "발라드", mastery: 3 },
+            { title: "팬서비스", artist: "Mona", genre: "J-POP", mastery: 5 },
+            { title: "Hype Boy", artist: "NewJeans", genre: "댄스/팝", mastery: 3 },
+            { title: "Good-bye Days", artist: "YUI", genre: "J-POP", mastery: 4 }
+        ];
+
+        // Upbo (Karma) default data
+        const defaultUpboData = [
+            { id: "dougie0328", nickname: "열혈설령이", items: [{ name: "움짤 방셀", count: 1 }, { name: "1:1 음성 메시지", count: 1 }] },
+            { id: "", nickname: "체리유령👻", items: [{ name: "네컷 방셀", count: 2 }, { name: "모닝콜 음성", count: 1 }] },
+            { id: "", nickname: "다크크림슨", items: [{ name: "지정 의상 방셀", count: 1 }] }
+        ];
+
+        // Global States
+        let globalProfileData = {};
+        let globalNoticeData = [];
+        let globalScheduleData = [];
+        let globalBangsellData = [];
+        let globalSongbookData = [];
+        let globalUpboData = [];
+
+        let isAdminMode = false;
+        let selectedGenre = 'ALL';
+        let tempBangsellBase64 = "";
+        let currentEditingUpboUserIndex = null;
+
+        function getStorage(key, def) {
+            try {
+                const val = localStorage.getItem('seori_' + key);
+                return val ? JSON.parse(val) : def;
+            } catch(e) { return def; }
+        }
+        function setStorage(key, val) {
+            try { localStorage.setItem('seori_' + key, JSON.stringify(val)); } catch(e){}
+        }
+
+        // Load all state
+        function loadAllData() {
+            globalProfileData = getStorage('profile', defaultProfileData);
+            globalNoticeData = getStorage('notice', defaultNoticeData);
+            globalScheduleData = getStorage('schedule', defaultScheduleData);
+            globalBangsellData = getStorage('bangsell', defaultBangsellData);
+            globalSongbookData = getStorage('songbook', defaultSongbookData);
+            globalUpboData = getStorage('upbo', defaultUpboData);
+        }
+
+        // Particle Generators (Red Heart, White Heart, Ghost)
+        function createParticles() {
+            const container = document.getElementById('heart-bg-effects');
+            if(!container) return;
+            const items = ['❤️', '🤍', '👻', '✨', '🖤'];
+            
+            setInterval(() => {
+                const el = document.createElement('div');
+                el.className = 'heart-particle select-none';
+                el.style.left = Math.random() * 100 + 'vw';
+                el.style.top = '-20px';
+                el.style.fontSize = (Math.random() * 14 + 12) + 'px';
+                el.style.animationDuration = (Math.random() * 6 + 6) + 's';
+                el.innerText = items[Math.floor(Math.random() * items.length)];
+                
+                container.appendChild(el);
+                setTimeout(() => el.remove(), 12000);
+            }, 550);
+        }
+
+        // Toast Helper
+        function showToast(msg) {
+            const toast = document.getElementById('toast-message');
+            const txt = document.getElementById('toast-text');
+            txt.innerText = msg;
+            toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+            }, 3000);
+        }
+
+        function renderProfile() {
+            document.getElementById('profile-banner-img').src = globalProfileData.bannerUrl || defaultProfileData.bannerUrl;
+            document.getElementById('profile-intro-text').textContent = globalProfileData.introText || defaultProfileData.introText;
+            
+            const tagsCont = document.getElementById('profile-tags-container');
+            tagsCont.innerHTML = (globalProfileData.tags || []).map(t => 
+                `<span class="px-3 py-1 bg-[#12141d] border border-[#232838] text-[#DDE2EA] text-xs rounded-full">#${t.trim()}</span>`
+            ).join('');
+
+            // D-Days Render
+            const ddayCont = document.getElementById('dday-container');
+            ddayCont.innerHTML = '';
+            (globalProfileData.ddays || []).forEach(d => {
+                const result = calcDDay(d.type, d.date);
+                ddayCont.innerHTML += `
+                    <div class="flex items-center justify-between p-3.5 bg-[#0a0b10] rounded-2xl border border-[#232838]">
+                        <div>
+                            <span class="text-sm font-bold text-white block">${d.title}</span>
+                            <span class="text-xs text-[#8C9BAE]">${d.date}</span>
+                        </div>
+                        <div>${result}</div>
+                    </div>
+                `;
+            });
+        }
+
+        function calcDDay(type, dateStr) {
+            const today = new Date();
+            today.setHours(0,0,0,0);
+            
+            if(type === 'birthday') {
+                const parts = dateStr.split('-');
+                const month = parseInt(parts[0], 10) - 1;
+                const day = parseInt(parts[1], 10);
+                let target = new Date(today.getFullYear(), month, day);
+                if(target < today) target.setFullYear(today.getFullYear() + 1);
+                
+                const diff = Math.ceil((target - today) / (1000 * 60 * 60 * 24));
+                if(diff === 0) return `<span class="text-[#FF2E4D] font-extrabold text-sm animate-pulse">오늘 생일! 🎉</span>`;
+                return `<span class="text-[#FF2E4D] font-bold text-lg">D-${diff}</span>`;
+            } else if(type === 'anniversary') {
+                const parts = dateStr.split('-');
+                const target = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
+                const diff = Math.floor((today - target) / (1000 * 60 * 60 * 24)) + 1;
+                return `<span class="text-[#DDE2EA] font-bold text-lg">${diff}일째 ❤️</span>`;
+            }
+            return `<span class="text-[#8C9BAE] text-xs">D-Day</span>`;
+        }
+
+        function renderNotice() {
+            const list = document.getElementById('notice-list');
+            list.innerHTML = '';
+            if(globalNoticeData.length === 0) {
+                list.innerHTML = `<li class="text-center text-[#8C9BAE] text-xs py-4">등록된 공지가 없습니다.</li>`;
+                return;
+            }
+            globalNoticeData.forEach(n => {
+                let badgeStyle = "bg-[#232838] text-[#DDE2EA]";
+                if(n.type === '필독') badgeStyle = "bg-[#B10E1E] text-white";
+                if(n.type === '안내') badgeStyle = "bg-[#1c2230] text-[#FF2E4D] border border-[#B10E1E]/40";
+
+                let linkBtn = n.link ? `<a href="${n.link}" target="_blank" class="text-xs text-[#FF2E4D] hover:underline font-bold mt-1 inline-block">바로가기 <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>` : '';
+
+                list.innerHTML += `
+                    <li class="p-3.5 bg-[#0a0b10] border border-[#232838] rounded-2xl">
+                        <div class="flex justify-between items-center mb-1.5">
+                            <span class="${badgeStyle} text-[10px] font-bold px-2.5 py-0.5 rounded-full">${n.type}</span>
+                            <span class="text-[10px] text-[#8C9BAE]">${n.date}</span>
+                        </div>
+                        <p class="text-xs text-[#DDE2EA] font-medium leading-relaxed">${n.content}</p>
+                        ${linkBtn}
+                    </li>
+                `;
+            });
+        }
+
+        function renderSchedule() {
+            const list = document.getElementById('schedule-list');
+            list.innerHTML = '';
+            globalScheduleData.forEach(s => {
+                const restStyle = s.isRest ? 'bg-[#1a080c] border-[#B10E1E]/40 text-[#FF2E4D]' : 'bg-[#0a0b10] border-[#232838] text-[#DDE2EA]';
+                list.innerHTML += `
+                    <div class="flex items-center gap-3 p-3 rounded-2xl border ${restStyle}">
+                        <div class="w-8 h-8 rounded-xl bg-[#12141d] border border-[#232838] flex items-center justify-center font-bold text-xs text-white">
+                            ${s.day}
+                        </div>
+                        <div class="text-xs font-semibold flex-grow">${s.content}</div>
+                    </div>
+                `;
+            });
+        }
+
+        function renderBangsell() {
+            const grid = document.getElementById('bangsell-grid');
+            grid.innerHTML = '';
+            if(globalBangsellData.length === 0) {
+                grid.innerHTML = `<div class="col-span-full py-8 text-center text-[#8C9BAE] text-xs">등록된 이달의 방셀 아이템이 없습니다.</div>`;
+                return;
+            }
+            globalBangsellData.forEach(bs => {
+                grid.innerHTML += `
+                    <div class="bg-[#0a0b10] border border-[#232838] rounded-2xl overflow-hidden hover:border-[#B10E1E]/50 transition-all group cursor-pointer" onclick="openImageLightbox('${bs.url}', '${bs.title}')">
+                        <div class="aspect-[4/5] bg-[#12141d] relative overflow-hidden png-bg-pattern flex items-center justify-center p-1">
+                            <img src="${bs.url}" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://placehold.co/400x500/12141d/FF2E4D?text=Seori+Outfit'">
+                            <span class="absolute top-2 left-2 text-[10px] font-bold bg-[#B10E1E] text-white px-2 py-0.5 rounded-full shadow-md">${bs.category}</span>
+                        </div>
+                        <div class="p-3">
+                            <h4 class="text-xs font-bold text-white truncate mb-0.5">${bs.title}</h4>
+                            <p class="text-[10px] text-[#8C9BAE] truncate">${bs.description || ''}</p>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        // Lightbox image viewer
+        function openImageLightbox(url, title) {
+            document.getElementById('lightbox-img').src = url;
+            document.getElementById('lightbox-title').textContent = title;
+            const modal = document.getElementById('image-lightbox-modal');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+        }
+        function closeImageLightbox() {
+            const modal = document.getElementById('image-lightbox-modal');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        function renderSongbookCategoryTabs() {
+            const tabsCont = document.getElementById('song-genre-tabs');
+            if(!tabsCont) return;
+
+            // Extract unique custom genres/categories
+            const categories = Array.from(new Set(globalSongbookData.map(s => s.genre || '기타').filter(Boolean)));
+            
+            let tabsHtml = `
+                <button onclick="filterSongGenre('ALL')" class="genre-btn ${selectedGenre === 'ALL' ? 'active bg-[#B10E1E] text-white' : 'bg-[#12141d] border border-[#232838] text-[#8C9BAE] hover:text-white'} px-3.5 py-2 rounded-xl text-xs font-bold transition-all">전체</button>
+            `;
+
+            categories.forEach(cat => {
+                const isActive = (selectedGenre === cat);
+                tabsHtml += `
+                    <button onclick="filterSongGenre('${cat}')" class="genre-btn ${isActive ? 'active bg-[#B10E1E] text-white' : 'bg-[#12141d] border border-[#232838] text-[#8C9BAE] hover:text-white'} px-3.5 py-2 rounded-xl text-xs font-bold transition-all">${cat}</button>
+                `;
+            });
+
+            tabsCont.innerHTML = tabsHtml;
+        }
+
+        function renderSongbook() {
+            renderSongbookCategoryTabs();
+            const body = document.getElementById('songbook-list-body');
+            const searchKw = document.getElementById('song-search-input').value.toLowerCase().trim();
+            body.innerHTML = '';
+
+            const filtered = globalSongbookData.filter(s => {
+                const matchGenre = (selectedGenre === 'ALL' || s.genre === selectedGenre);
+                const matchKw = (
+                    (s.title || '').toLowerCase().includes(searchKw) || 
+                    (s.artist || '').toLowerCase().includes(searchKw) ||
+                    (s.genre || '').toLowerCase().includes(searchKw)
+                );
+                return matchGenre && matchKw;
+            });
+
+            if(filtered.length === 0) {
+                body.innerHTML = `<tr><td colspan="4" class="p-6 text-center text-xs text-[#8C9BAE]">검색 조건에 맞는 곡이 없습니다.</td></tr>`;
+                return;
+            }
+
+            filtered.forEach(s => {
+                // Generate 1 to 5 Red Hearts for Mastery Rating
+                const masteryCount = Math.max(1, Math.min(5, parseInt(s.mastery || 3, 10)));
+                const heartsStr = '❤️'.repeat(masteryCount);
+
+                body.innerHTML += `
+                    <tr class="hover:bg-[#12141d]/50 transition-colors">
+                        <td class="p-3 pl-5 text-xs text-[#8C9BAE] font-medium">
+                            <span class="px-2 py-0.5 rounded-full bg-[#12141d] border border-[#232838] text-white">${s.genre || '기타'}</span>
+                        </td>
+                        <td class="p-3 text-xs font-bold text-white">${s.title}</td>
+                        <td class="p-3 text-xs text-[#DDE2EA]">${s.artist}</td>
+                        <td class="p-3 pr-5 text-right font-bold text-xs tracking-wider" title="숙련도 ${masteryCount}단계">
+                            ${heartsStr}
+                        </td>
+                    </tr>
+                `;
+            });
+        }
+
+        function filterSongGenre(genre) {
+            selectedGenre = genre;
+            renderSongbook();
+        }
+
+        function getSoopAvatarUrl(id) {
+            if (!id || !id.trim()) return null;
+            const cleanId = id.trim().toLowerCase();
+            const prefix = cleanId.substring(0, 2);
+            return `https://stimg.afreecatv.com/LOGO/${prefix}/${cleanId}/${cleanId}.jpg`;
+        }
+
+        function renderUpbo() {
+            const grid = document.getElementById('upbo-grid');
+            if (!grid) return;
+            grid.innerHTML = '';
+
+            const searchKw = document.getElementById('upbo-search-input').value.toLowerCase().trim();
+
+            const filtered = globalUpboData.filter(u => 
+                (u.nickname || '').toLowerCase().includes(searchKw) ||
+                (u.id || '').toLowerCase().includes(searchKw)
+            );
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `<div class="col-span-full py-8 text-center text-[#8C9BAE] text-xs">등록된 업보 데이터가 없습니다.</div>`;
+                return;
+            }
+
+            filtered.forEach((user, index) => {
+                const totalKarma = (user.items || []).reduce((sum, item) => sum + (parseInt(item.count) || 0), 0);
+                const avatarUrl = getSoopAvatarUrl(user.id);
+                
+                let avatarHtml = `
+                    <div class="w-12 h-12 rounded-full bg-[#12141d] border-2 border-[#B10E1E] flex items-center justify-center text-xl shadow-[0_0_10px_rgba(177,14,30,0.4)]">
+                        👻
+                    </div>
+                `;
+
+                if (avatarUrl) {
+                    avatarHtml = `
+                        <img src="${avatarUrl}" 
+                             onerror="this.outerHTML='<div class=\\'w-12 h-12 rounded-full bg-[#12141d] border-2 border-[#B10E1E] flex items-center justify-center text-xl\\'>👻</div>'" 
+                             class="w-12 h-12 rounded-full object-cover border-2 border-[#B10E1E] shadow-[0_0_10px_rgba(177,14,30,0.4)]">
+                    `;
+                }
+
+                grid.innerHTML += `
+                    <div onclick="clickUpboUserCard(${index})" class="bg-[#0a0b10] border border-[#232838] hover:border-[#B10E1E]/60 rounded-2xl p-4 flex flex-col items-center text-center cursor-pointer transition-all hover:-translate-y-1 group">
+                        <div class="mb-2 group-hover:scale-105 transition-transform">
+                            ${avatarHtml}
+                        </div>
+                        <h4 class="text-xs font-bold text-white truncate w-full mb-1">${user.nickname}</h4>
+                        <span class="text-[10px] bg-[#B10E1E]/20 text-[#FF2E4D] border border-[#B10E1E]/40 font-bold px-2.5 py-0.5 rounded-full">
+                            업보 ${totalKarma}개
+                        </span>
+                    </div>
+                `;
+            });
+        }
+
+        function clickUpboUserCard(index) {
+            if (isAdminMode) {
+                openUpboEditModal(index);
+            } else {
+                openUpboDetailModal(index);
+            }
+        }
+
+        function openUpboDetailModal(index) {
+            const user = globalUpboData[index];
+            if(!user) return;
+
+            const avatarUrl = getSoopAvatarUrl(user.id);
+            const avatarHtml = avatarUrl 
+                ? `<img src="${avatarUrl}" onerror="this.outerHTML='<div class=\\'w-10 h-10 rounded-full bg-[#12141d] border border-[#B10E1E] flex items-center justify-center text-lg\\'>👻</div>'" class="w-10 h-10 rounded-full object-cover border border-[#B10E1E]">`
+                : `<div class="w-10 h-10 rounded-full bg-[#12141d] border border-[#B10E1E] flex items-center justify-center text-lg">👻</div>`;
+
+            document.getElementById('upbo-user-modal-header').innerHTML = `
+                ${avatarHtml}
+                <div>
+                    <h4 class="text-sm font-bold text-white">${user.nickname}</h4>
+                    <span class="text-[10px] text-[#8C9BAE]">${user.id ? '@' + user.id : '설령이 업보 현황'}</span>
+                </div>
+            `;
+
+            const listEl = document.getElementById('upbo-user-items-list');
+            if (!user.items || user.items.length === 0) {
+                listEl.innerHTML = `<p class="text-xs text-[#8C9BAE] text-center py-4">쌓인 업보가 없습니다! 🎉</p>`;
+            } else {
+                listEl.innerHTML = user.items.map(item => `
+                    <div class="flex items-center justify-between p-2.5 bg-[#0a0b10] border border-[#232838] rounded-xl text-xs">
+                        <span class="font-bold text-white">${item.name}</span>
+                        <span class="text-[#FF2E4D] font-extrabold px-2 py-0.5 rounded-lg bg-[#B10E1E]/20 border border-[#B10E1E]/40">× ${item.count}</span>
+                    </div>
+                `).join('');
+            }
+
+            const modal = document.getElementById('upbo-detail-modal');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+        }
+
+        function closeUpboDetailModal() {
+            const modal = document.getElementById('upbo-detail-modal');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        function openAdminLoginModal() {
+            if(isAdminMode) {
+                isAdminMode = false;
+                toggleAdminVisibility(false);
+                showToast("관리자 모드가 해제되었습니다.");
+                return;
+            }
+            document.getElementById('admin-pin-input').value = '';
+            const modal = document.getElementById('admin-login-modal');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.querySelector('div').classList.remove('scale-95');
+        }
+
+        function closeAdminLoginModal() {
+            const modal = document.getElementById('admin-login-modal');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            modal.querySelector('div').classList.add('scale-95');
+        }
+
+        function checkAdminPin() {
+            const pin = document.getElementById('admin-pin-input').value;
+            if(pin === '12345679') {
+                isAdminMode = true;
+                toggleAdminVisibility(true);
+                closeAdminLoginModal();
+                showToast("관리자 모드로 로그인되었습니다! ❤️");
+            } else {
+                showToast("비밀번호가 올바르지 않습니다.");
+            }
+        }
+
+        function toggleAdminVisibility(show) {
+            const btns = [
+                'admin-profile-edit-btn', 'admin-notice-edit-btn', 'admin-schedule-edit-btn',
+                'admin-bangsell-edit-btn', 'admin-song-edit-btn', 'admin-upbo-add-user-btn'
+            ];
+            btns.forEach(id => {
+                const el = document.getElementById(id);
+                if(el) {
+                    if(show) el.classList.remove('hidden');
+                    else el.classList.add('hidden');
+                }
+            });
+            renderUpbo();
+        }
+
+        // Profile Editing Logic
+        function openProfileEditModal() {
+            document.getElementById('edit-profile-banner').value = globalProfileData.bannerUrl || '';
+            document.getElementById('edit-profile-intro').value = globalProfileData.introText || '';
+            document.getElementById('edit-profile-tags').value = (globalProfileData.tags || []).join(', ');
+            
+            const modal = document.getElementById('profile-edit-modal');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.querySelector('div').classList.remove('scale-95');
+        }
+        function closeProfileEditModal() {
+            const modal = document.getElementById('profile-edit-modal');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            modal.querySelector('div').classList.add('scale-95');
+        }
+        function saveProfileChanges() {
+            globalProfileData.bannerUrl = document.getElementById('edit-profile-banner').value.trim();
+            globalProfileData.introText = document.getElementById('edit-profile-intro').value.trim();
+            globalProfileData.tags = document.getElementById('edit-profile-tags').value.split(',').map(t => t.trim()).filter(t=>t!=='');
+            
+            setStorage('profile', globalProfileData);
+            renderProfile();
+            closeProfileEditModal();
+            showToast("프로필 수정이 반영되었습니다!");
+        }
+
+        function openNoticeEditModal() {
+            renderNoticeEditList();
+            const modal = document.getElementById('notice-edit-modal');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.querySelector('div').classList.remove('scale-95');
+        }
+        function closeNoticeEditModal() {
+            const modal = document.getElementById('notice-edit-modal');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            modal.querySelector('div').classList.add('scale-95');
+        }
+        function renderNoticeEditList() {
+            const list = document.getElementById('notice-edit-list');
+            list.innerHTML = globalNoticeData.map((n, i) => `
+                <div class="flex justify-between items-center p-2.5 bg-[#0a0b10] border border-[#232838] rounded-xl text-xs">
+                    <span class="font-bold text-white truncate max-w-[220px]">${n.content}</span>
+                    <button onclick="deleteNotice(${i})" class="text-red-400 p-1"><i class="fa-solid fa-trash"></i></button>
+                </div>
+            `).join('');
+        }
+        function addNewNotice() {
+            const type = document.getElementById('new-notice-type').value;
+            const content = document.getElementById('new-notice-content').value.trim();
+            const link = document.getElementById('new-notice-link').value.trim();
+            if(!content) return;
+
+            const now = new Date();
+            const dateStr = `${now.getFullYear()}.${String(now.getMonth()+1).padStart(2,'0')}.${String(now.getDate()).padStart(2,'0')}`;
+
+            globalNoticeData.unshift({ type, date: dateStr, content, link });
+            setStorage('notice', globalNoticeData);
+            document.getElementById('new-notice-content').value = '';
+            document.getElementById('new-notice-link').value = '';
+            renderNoticeEditList();
+            renderNotice();
+            showToast("새 공지가 등록되었습니다.");
+        }
+        function deleteNotice(idx) {
+            globalNoticeData.splice(idx, 1);
+            setStorage('notice', globalNoticeData);
+            renderNoticeEditList();
+            renderNotice();
+        }
+
+        // Schedule Editing Logic
+        function openScheduleEditModal() {
+            renderScheduleEditList();
+            const modal = document.getElementById('schedule-edit-modal');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.querySelector('div').classList.remove('scale-95');
+        }
+        function closeScheduleEditModal() {
+            const modal = document.getElementById('schedule-edit-modal');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            modal.querySelector('div').classList.add('scale-95');
+        }
+        function renderScheduleEditList() {
+            const list = document.getElementById('schedule-edit-list');
+            list.innerHTML = globalScheduleData.map((s, i) => `
+                <div class="flex items-center gap-2 bg-[#0a0b10] border border-[#232838] p-2 rounded-xl text-xs">
+                    <span class="w-6 font-bold text-white text-center">${s.day}</span>
+                    <input type="text" id="sched-input-${i}" value="${s.content}" class="flex-grow bg-[#12141d] border border-[#232838] p-1.5 rounded-lg text-white outline-none">
+                    <label class="flex items-center gap-1 text-[10px] text-[#8C9BAE]">
+                        <input type="checkbox" id="sched-rest-${i}" ${s.isRest?'checked':''}> 휴방
+                    </label>
+                </div>
+            `).join('');
+        }
+        function saveScheduleChanges() {
+            globalScheduleData.forEach((s, i) => {
+                s.content = document.getElementById(`sched-input-${i}`).value;
+                s.isRest = document.getElementById(`sched-rest-${i}`).checked;
+            });
+            setStorage('schedule', globalScheduleData);
+            renderSchedule();
+            closeScheduleEditModal();
+            showToast("주간 일정이 저장되었습니다.");
+        }
+
+        function openBangsellEditModal() {
+            tempBangsellBase64 = "";
+            document.getElementById('bs-file-label-text').textContent = "PNG/이미지 파일 찾기";
+            renderBangsellEditList();
+            const modal = document.getElementById('bangsell-edit-modal');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.querySelector('div').classList.remove('scale-95');
+        }
+        function closeBangsellEditModal() {
+            const modal = document.getElementById('bangsell-edit-modal');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            modal.querySelector('div').classList.add('scale-95');
+        }
+        function renderBangsellEditList() {
+            const list = document.getElementById('bangsell-edit-list');
+            list.innerHTML = globalBangsellData.map((bs, i) => `
+                <div class="flex items-center justify-between p-2.5 bg-[#0a0b10] border border-[#232838] rounded-xl text-xs">
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded bg-[#12141d] p-0.5 png-bg-pattern flex items-center justify-center border border-[#232838]">
+                            <img src="${bs.url}" class="w-full h-full object-contain">
+                        </div>
+                        <div>
+                            <div class="font-bold text-white">${bs.title}</div>
+                            <div class="text-[10px] text-[#8C9BAE]">${bs.category}</div>
+                        </div>
+                    </div>
+                    <button onclick="deleteBangsell(${i})" class="text-red-400 p-1"><i class="fa-solid fa-trash"></i></button>
+                </div>
+            `).join('');
+        }
+
+        // Handle local file selection (PNG supported with transparency)
+        function handleBangsellFileSelected(input) {
+            const file = input.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                tempBangsellBase64 = e.target.result;
+                document.getElementById('bs-file-label-text').textContent = `파일 선택됨 (${file.name})`;
+                showToast("이미지 파일이 선택되었습니다.");
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function addNewBangsell() {
+            const title = document.getElementById('new-bs-title').value.trim();
+            const category = document.getElementById('new-bs-cat').value;
+            const description = document.getElementById('new-bs-desc').value.trim();
+            let url = document.getElementById('new-bs-url').value.trim();
+
+            if(!title) return;
+
+            if (tempBangsellBase64) {
+                url = tempBangsellBase64;
+            } else if(!url) {
+                url = 'https://placehold.co/400x500/12141d/FF2E4D?text=Seori';
+            }
+
+            globalBangsellData.unshift({ title, category, description, url });
+            setStorage('bangsell', globalBangsellData);
+            
+            document.getElementById('new-bs-title').value = '';
+            document.getElementById('new-bs-desc').value = '';
+            document.getElementById('new-bs-url').value = '';
+            document.getElementById('new-bs-file').value = '';
+            tempBangsellBase64 = "";
+            document.getElementById('bs-file-label-text').textContent = "PNG/이미지 파일 찾기";
+
+            renderBangsellEditList();
+            renderBangsell();
+            showToast("방셀 상품이 추가되었습니다.");
+        }
+        function deleteBangsell(idx) {
+            globalBangsellData.splice(idx, 1);
+            setStorage('bangsell', globalBangsellData);
+            renderBangsellEditList();
+            renderBangsell();
+        }
+
+        function openSongEditModal() {
+            renderSongEditList();
+            const modal = document.getElementById('song-edit-modal');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.querySelector('div').classList.remove('scale-95');
+        }
+        function closeSongEditModal() {
+            const modal = document.getElementById('song-edit-modal');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            modal.querySelector('div').classList.add('scale-95');
+        }
+        function renderSongEditList() {
+            const list = document.getElementById('song-edit-list');
+            list.innerHTML = globalSongbookData.map((s, i) => `
+                <div class="flex items-center justify-between p-2 bg-[#0a0b10] border border-[#232838] rounded-xl text-xs">
+                    <div>
+                        <span class="font-bold text-white">${s.title}</span>
+                        <span class="text-[10px] text-[#8C9BAE]"> - ${s.artist} (${s.genre || '기타'})</span>
+                        <span class="text-[10px] ml-1 text-[#FF2E4D]">${'❤️'.repeat(parseInt(s.mastery || 3))}</span>
+                    </div>
+                    <button onclick="deleteSong(${i})" class="text-red-400 p-1"><i class="fa-solid fa-trash"></i></button>
+                </div>
+            `).join('');
+        }
+        function addNewSong() {
+            const genreInput = document.getElementById('new-song-genre').value.trim();
+            const genre = genreInput || '기타';
+            const title = document.getElementById('new-song-title').value.trim();
+            const artist = document.getElementById('new-song-artist').value.trim();
+            const mastery = parseInt(document.getElementById('new-song-mastery').value || '3', 10);
+            
+            if(!title) return;
+
+            globalSongbookData.unshift({ genre, title, artist, mastery });
+            setStorage('songbook', globalSongbookData);
+            
+            document.getElementById('new-song-title').value = '';
+            document.getElementById('new-song-artist').value = '';
+            renderSongEditList();
+            renderSongbook();
+            showToast("노래책에 새 곡이 추가되었습니다.");
+        }
+        function deleteSong(idx) {
+            globalSongbookData.splice(idx, 1);
+            setStorage('songbook', globalSongbookData);
+            renderSongEditList();
+            renderSongbook();
+        }
+
+        function openAddUpboUserModal() {
+            document.getElementById('new-upbo-id').value = '';
+            document.getElementById('new-upbo-nick').value = '';
+            const modal = document.getElementById('upbo-add-user-modal');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.querySelector('div').classList.remove('scale-95');
+        }
+        function closeAddUpboUserModal() {
+            const modal = document.getElementById('upbo-add-user-modal');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            modal.querySelector('div').classList.add('scale-95');
+        }
+        function submitNewUpboUser() {
+            const id = document.getElementById('new-upbo-id').value.trim();
+            const nickname = document.getElementById('new-upbo-nick').value.trim();
+            if(!nickname) {
+                showToast("닉네임을 입력해주세요!");
+                return;
+            }
+
+            globalUpboData.unshift({ id, nickname, items: [] });
+            setStorage('upbo', globalUpboData);
+            closeAddUpboUserModal();
+            renderUpbo();
+            showToast(`새 팬/설령이 (${nickname})님 업보가 등록되었습니다.`);
+        }
+
+        function openUpboEditModal(index) {
+            currentEditingUpboUserIndex = index;
+            const user = globalUpboData[index];
+            if(!user) return;
+
+            const avatarUrl = getSoopAvatarUrl(user.id);
+            const avatarHtml = avatarUrl 
+                ? `<img src="${avatarUrl}" onerror="this.outerHTML='<div class=\\'w-8 h-8 rounded-full bg-[#12141d] border border-[#B10E1E] flex items-center justify-center text-sm\\'>👻</div>'" class="w-8 h-8 rounded-full object-cover border border-[#B10E1E]">`
+                : `<div class="w-8 h-8 rounded-full bg-[#12141d] border border-[#B10E1E] flex items-center justify-center text-sm">👻</div>`;
+
+            document.getElementById('upbo-edit-header').innerHTML = `
+                ${avatarHtml}
+                <div>
+                    <h4 class="text-xs font-bold text-white">${user.nickname} 업보 관리</h4>
+                    <span class="text-[10px] text-[#8C9BAE]">${user.id ? '@' + user.id : '설령이 업보'}</span>
+                </div>
+            `;
+
+            renderUpboEditItemsList();
+
+            const modal = document.getElementById('upbo-edit-modal');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.querySelector('div').classList.remove('scale-95');
+        }
+
+        function closeUpboEditModal() {
+            currentEditingUpboUserIndex = null;
+            const modal = document.getElementById('upbo-edit-modal');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            modal.querySelector('div').classList.add('scale-95');
+        }
+
+        function renderUpboEditItemsList() {
+            if(currentEditingUpboUserIndex === null) return;
+            const user = globalUpboData[currentEditingUpboUserIndex];
+            const listEl = document.getElementById('upbo-edit-items-list');
+
+            if(!user.items || user.items.length === 0) {
+                listEl.innerHTML = `<p class="text-xs text-[#8C9BAE] text-center py-4">등록된 업보 항목이 없습니다.</p>`;
+                return;
+            }
+
+            listEl.innerHTML = user.items.map((item, itemIdx) => `
+                <div class="flex items-center justify-between p-2.5 bg-[#0a0b10] border border-[#232838] rounded-xl text-xs">
+                    <span class="font-bold text-white">${item.name}</span>
+                    <div class="flex items-center gap-2">
+                        <button onclick="changeUpboCount(${itemIdx}, -1)" class="w-6 h-6 rounded bg-[#232838] text-white hover:bg-[#B10E1E] font-bold flex items-center justify-center">-</button>
+                        <span class="font-bold text-[#FF2E4D] w-5 text-center">${item.count}</span>
+                        <button onclick="changeUpboCount(${itemIdx}, 1)" class="w-6 h-6 rounded bg-[#232838] text-white hover:bg-[#B10E1E] font-bold flex items-center justify-center">+</button>
+                        <button onclick="deleteUpboItem(${itemIdx})" class="text-red-400 ml-1 p-1"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function changeUpboCount(itemIdx, delta) {
+            if(currentEditingUpboUserIndex === null) return;
+            const items = globalUpboData[currentEditingUpboUserIndex].items;
+            items[itemIdx].count = Math.max(0, (parseInt(items[itemIdx].count) || 0) + delta);
+            setStorage('upbo', globalUpboData);
+            renderUpboEditItemsList();
+            renderUpbo();
+        }
+
+        function deleteUpboItem(itemIdx) {
+            if(currentEditingUpboUserIndex === null) return;
+            globalUpboData[currentEditingUpboUserIndex].items.splice(itemIdx, 1);
+            setStorage('upbo', globalUpboData);
+            renderUpboEditItemsList();
+            renderUpbo();
+        }
+
+        function addUpboItemToUser() {
+            if(currentEditingUpboUserIndex === null) return;
+            const input = document.getElementById('new-upbo-item-name');
+            const name = input.value.trim();
+            if(!name) return;
+
+            const items = globalUpboData[currentEditingUpboUserIndex].items;
+            const existing = items.find(i => i.name === name);
+            if(existing) {
+                existing.count += 1;
+            } else {
+                items.push({ name, count: 1 });
+            }
+
+            setStorage('upbo', globalUpboData);
+            input.value = '';
+            renderUpboEditItemsList();
+            renderUpbo();
+            showToast("업보 항목이 추가되었습니다.");
+        }
+
+        function deleteCurrentUpboUser() {
+            if(currentEditingUpboUserIndex === null) return;
+            globalUpboData.splice(currentEditingUpboUserIndex, 1);
+            setStorage('upbo', globalUpboData);
+            closeUpboEditModal();
+            renderUpbo();
+            showToast("사용자가 삭제되었습니다.");
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadAllData();
+            createParticles();
+
+            renderProfile();
+            renderNotice();
+            renderSchedule();
+            renderBangsell();
+            renderSongbook();
+            renderUpbo();
+
+            // Mobile Menu Toggle
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            if(mobileBtn) {
+                mobileBtn.addEventListener('click', () => {
+                    document.getElementById('mobile-menu').classList.toggle('hidden');
+                });
+            }
+
+            // Song Search Event
+            const songSearch = document.getElementById('song-search-input');
+            if(songSearch) {
+                songSearch.addEventListener('input', renderSongbook);
+            }
+
+            // Upbo Search Event
+            const upboSearch = document.getElementById('upbo-search-input');
+            if(upboSearch) {
+                upboSearch.addEventListener('input', renderUpbo);
+            }
+        });
+    </script>
+</body>
+</html>
