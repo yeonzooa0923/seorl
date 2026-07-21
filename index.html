@@ -152,7 +152,6 @@
         </div>
     </header>
 
-    <!-- Main Content Container -->
     <main class="flex-grow w-full max-w-5xl mx-auto px-4 sm:px-6 py-8 space-y-12 relative z-10">
 
         <section id="profile" class="scroll-mt-24 space-y-6">
@@ -660,7 +659,7 @@
         import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, doc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        // Firebase Configuration
+        /* Firebase Configuration */
         const userFirebaseConfig = {
             apiKey: "AIzaSyCekmbU-9jnjvn5xgaGxUNTZESIZvA3zoM",
             authDomain: "seorl-88bb8.firebaseapp.com",
@@ -724,7 +723,7 @@
             { id: "", nickname: "다크크림슨", items: [{ name: "지정 의상 방셀", count: 1 }] }
         ];
 
-        // Global States
+        /* Global States */
         let globalProfileData = {};
         let globalNoticeData = [];
         let globalScheduleData = [];
@@ -749,19 +748,20 @@
             try { localStorage.setItem('seori_' + key, JSON.stringify(val)); } catch(e){}
         }
 
-        // Clean object serialization helper for Firestore
+        /* Clean object serialization helper for Firestore */
         function cleanFirestoreObject(val) {
             if (val === undefined || val === null) return null;
+            if (typeof val === 'boolean' || typeof val === 'string') return val;
             if (typeof val === 'number') {
                 return (isNaN(val) || !isFinite(val)) ? 0 : val;
             }
-            if (typeof val === 'boolean' || typeof val === 'string') return val;
             if (Array.isArray(val)) {
-                return val.flat(Infinity).map(item => cleanFirestoreObject(item)).filter(item => item !== undefined && item !== null);
+                return val.map(item => cleanFirestoreObject(item)).filter(item => item !== undefined && item !== null);
             }
             if (typeof val === 'object') {
                 const cleaned = {};
-                for (const [k, v] of Object.entries(val)) {
+                for (const k of Object.keys(val)) {
+                    const v = val[k];
                     if (v !== undefined && typeof v !== 'function') {
                         cleaned[k] = cleanFirestoreObject(v);
                     }
@@ -772,33 +772,62 @@
         }
 
         function getCleanProfileData(raw) {
-            const src = (raw && typeof raw === 'object') ? raw : defaultProfileData;
+            const src = (raw && typeof raw === 'object' && raw !== null) ? raw : defaultProfileData;
+            const bannerUrl = typeof src.bannerUrl === 'string' && src.bannerUrl ? src.bannerUrl : defaultProfileData.bannerUrl;
+            const introText = typeof src.introText === 'string' && src.introText ? src.introText : defaultProfileData.introText;
+            
+            let tags = defaultProfileData.tags;
+            if (Array.isArray(src.tags)) {
+                tags = src.tags.map(t => String(t || '').trim()).filter(Boolean);
+            }
+            
+            let ddays = defaultProfileData.ddays;
+            if (Array.isArray(src.ddays)) {
+                ddays = src.ddays.map(d => ({
+                    title: String(d && d.title ? d.title : ''),
+                    type: String(d && d.type ? d.type : 'dday'),
+                    date: String(d && d.date ? d.date : '')
+                })).filter(d => d.title !== '');
+            }
+
             return {
-                bannerUrl: typeof src.bannerUrl === 'string' ? src.bannerUrl : defaultProfileData.bannerUrl,
-                introText: typeof src.introText === 'string' ? src.introText : defaultProfileData.introText,
-                tags: Array.isArray(src.tags) ? src.tags.flat(Infinity).map(t => String(t || '').trim()).filter(Boolean) : defaultProfileData.tags,
-                ddays: Array.isArray(src.ddays) ? src.ddays.flat(Infinity).map(d => ({
-                    title: String(d?.title || ''),
-                    type: String(d?.type || 'dday'),
-                    date: String(d?.date || '')
-                })) : defaultProfileData.ddays
+                bannerUrl,
+                introText,
+                tags,
+                ddays
             };
         }
 
         async function syncDataToFirestore(key, value) {
-            let cleanValue;
             if (key === 'profile') {
-                cleanValue = cleanFirestoreObject(getCleanProfileData(value));
-                globalProfileData = cleanValue;
-            } else {
-                cleanValue = cleanFirestoreObject(value);
+                globalProfileData = cleanFirestoreObject(getCleanProfileData(value));
+            } else if (key === 'notice') {
+                globalNoticeData = cleanFirestoreObject(value);
+            } else if (key === 'schedule') {
+                globalScheduleData = cleanFirestoreObject(value);
+            } else if (key === 'bangsell') {
+                globalBangsellData = cleanFirestoreObject(value);
+            } else if (key === 'songbook') {
+                globalSongbookData = cleanFirestoreObject(value);
+            } else if (key === 'upbo') {
+                globalUpboData = cleanFirestoreObject(value);
             }
-            setStorage(key, cleanValue);
+
+            setStorage(key, value);
+
             if (!isAuthReady) return;
+
             try {
                 const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'siteData', 'mainDoc');
-                const payload = JSON.parse(JSON.stringify({ [key]: cleanValue }));
-                await setDoc(docRef, payload, { merge: true });
+                const fullPayload = {
+                    profile: cleanFirestoreObject(getCleanProfileData(globalProfileData)),
+                    notice: cleanFirestoreObject(globalNoticeData),
+                    schedule: cleanFirestoreObject(globalScheduleData),
+                    bangsell: cleanFirestoreObject(globalBangsellData),
+                    songbook: cleanFirestoreObject(globalSongbookData),
+                    upbo: cleanFirestoreObject(globalUpboData)
+                };
+                await setDoc(docRef, fullPayload);
             } catch (err) {
                 console.error("Firestore sync error:", err);
             }
@@ -818,14 +847,14 @@
                     
                     renderAllViews();
                 } else {
-                    const initialPayload = JSON.parse(JSON.stringify({
+                    const initialPayload = {
                         profile: cleanFirestoreObject(getCleanProfileData(globalProfileData)),
                         notice: cleanFirestoreObject(globalNoticeData),
                         schedule: cleanFirestoreObject(globalScheduleData),
                         bangsell: cleanFirestoreObject(globalBangsellData),
                         songbook: cleanFirestoreObject(globalSongbookData),
                         upbo: cleanFirestoreObject(globalUpboData)
-                    }));
+                    };
                     setDoc(docRef, initialPayload);
                 }
             }, (error) => {
