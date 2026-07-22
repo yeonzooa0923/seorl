@@ -160,9 +160,9 @@
             <div class="glow-card rounded-3xl overflow-hidden relative">
                 <!-- Cover Image (Color Enabled) -->
                 <div class="h-44 sm:h-64 w-full relative overflow-hidden bg-[#12141d]">
-                    <img id="profile-banner-img" src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1200&auto=format&fit=crop" 
-                         class="w-full h-full object-cover opacity-90 transition-opacity duration-300" alt="설이 프로필 배너">
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#12141d] via-transparent to-black/20"></div>
+                    <img id="profile-banner-img" src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop" 
+                         class="w-full h-full object-cover opacity-100 transition-opacity duration-300" alt="설이 프로필 배너">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#12141d] via-transparent to-black/10"></div>
                 </div>
 
                 <!-- Main Info Container -->
@@ -675,8 +675,10 @@
         const auth = getAuth(app);
         const db = getFirestore(app);
 
+        const VIVID_BANNER_URL = "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop";
+
         const defaultProfileData = {
-            bannerUrl: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1200&auto=format&fit=crop",
+            bannerUrl: VIVID_BANNER_URL,
             introText: `안녕하세요! 올어바웃 설이 방송국에 오신 설령님들을 환영합니다! ❤️👻\n매일 매일 함께 소통하며 즐거운 추억을 만들어가요.\n노래와 저챗, 게임까지 다채로운 이야기로 찾아뵙겠습니다.\n많은 관심과 사랑 부탁드립니다!`,
             tags: ["올어바웃설이", "설령", "버추얼", "노래방송"],
             ddays: [
@@ -785,7 +787,13 @@
 
         function getCleanProfileData(raw) {
             const src = (raw && typeof raw === 'object' && raw !== null) ? raw : defaultProfileData;
-            const bannerUrl = typeof src.bannerUrl === 'string' && src.bannerUrl ? src.bannerUrl : defaultProfileData.bannerUrl;
+            let bannerUrl = typeof src.bannerUrl === 'string' && src.bannerUrl ? src.bannerUrl : defaultProfileData.bannerUrl;
+            
+            // 기존에 캐시/저장되어 있던 어두운 배너 URL을 화려한 선명 컬러 배너로 자동 변경
+            if (bannerUrl.includes('photo-1518709268805-4e9042af9f23')) {
+                bannerUrl = VIVID_BANNER_URL;
+            }
+
             const introText = typeof src.introText === 'string' && src.introText ? src.introText : defaultProfileData.introText;
             
             let tags = defaultProfileData.tags;
