@@ -158,11 +158,11 @@
             
             <!-- Banner & Avatar Card -->
             <div class="glow-card rounded-3xl overflow-hidden relative">
-                <!-- Cover Image -->
-                <div class="h-44 sm:h-64 w-full relative overflow-hidden bg-gradient-to-r from-[#12141d] via-[#1a080c] to-[#0a0b10]">
+                <!-- Cover Image (Color Enabled) -->
+                <div class="h-44 sm:h-64 w-full relative overflow-hidden bg-[#12141d]">
                     <img id="profile-banner-img" src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1200&auto=format&fit=crop" 
-                         class="w-full h-full object-cover opacity-60 mix-blend-luminosity" alt="설이 프로필 배너">
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#12141d] via-transparent to-black/40"></div>
+                         class="w-full h-full object-cover opacity-90 transition-opacity duration-300" alt="설이 프로필 배너">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#12141d] via-transparent to-black/20"></div>
                 </div>
 
                 <!-- Main Info Container -->
@@ -229,7 +229,6 @@
                 </div>
             </div>
 
-            <!-- Self Intro & D-Day Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- Self Intro Card -->
                 <div class="glow-card rounded-3xl p-6 flex flex-col justify-between relative">
@@ -774,7 +773,7 @@
             reader.readAsDataURL(file);
         }
 
-        /* Clean object serialization helper for Firestore (Prevents Invalid Nested Entity Errors) */
+        /* Clean object serialization helper for Firestore */
         function sanitizeData(data) {
             if (data === undefined || data === null) return null;
             return JSON.parse(JSON.stringify(data, (key, value) => {
