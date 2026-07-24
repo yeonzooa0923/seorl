@@ -99,6 +99,7 @@
 </head>
 <body class="bg-[#0a0b10] text-[#DDE2EA] antialiased min-h-screen flex flex-col relative overflow-x-hidden">
 
+    <!-- Background Particle Container -->
     <div class="fixed inset-0 pointer-events-none overflow-hidden z-0 opacity-40" id="heart-bg-effects"></div>
 
     <header class="bg-[#0a0b10]/90 backdrop-blur-md sticky top-0 z-50 border-b border-[#232838]">
@@ -124,7 +125,7 @@
                     <a href="#songbook" class="px-3 py-2 rounded-xl text-[#DDE2EA] hover:text-white hover:bg-[#12141d] transition-all">노래책</a>
                     <a href="#upbo" class="px-3 py-2 rounded-xl text-[#DDE2EA] hover:text-white hover:bg-[#12141d] transition-all">업보 현황</a>
                     
-                    <button id="nav-admin-login-btn" class="ml-2 p-2.5 rounded-xl bg-[#12141d] border border-[#232838] hover:border-[#B10E1E] text-[#8C9BAE] hover:text-[#FF2E4D] transition-all" title="관리자 모드">
+                    <button id="nav-admin-login-btn" class="ml-2 p-2.5 rounded-xl bg-[#12141d] border border-[#232838] hover:border-[#B10E1E] text-[#8C9BAE] hover:text-[#FF2E4D] transition-all" title="관리자 로그인">
                         <i class="fa-solid fa-lock"></i>
                     </button>
                 </nav>
@@ -154,11 +155,12 @@
 
     <main class="flex-grow w-full max-w-5xl mx-auto px-4 sm:px-6 py-8 space-y-12 relative z-10">
 
+        <!-- Profile Section -->
         <section id="profile" class="scroll-mt-24 space-y-6">
             
             <!-- Banner & Avatar Card -->
             <div class="glow-card rounded-3xl overflow-hidden relative">
-                <!-- Cover Image (Color Enabled) -->
+                <!-- Cover Image -->
                 <div class="h-44 sm:h-64 w-full relative overflow-hidden bg-[#12141d]">
                     <img id="profile-banner-img" src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop" 
                          class="w-full h-full object-cover opacity-100 transition-opacity duration-300" alt="설이 프로필 배너">
@@ -241,14 +243,10 @@
                                 <i class="fa-solid fa-pen-to-square"></i>
                             </button>
                         </div>
-                        <p id="profile-intro-text" class="text-sm text-[#DDE2EA] leading-relaxed whitespace-pre-wrap font-medium">
-                            <!-- JS Dynamic Content -->
-                        </p>
+                        <p id="profile-intro-text" class="text-sm text-[#DDE2EA] leading-relaxed whitespace-pre-wrap font-medium"></p>
                     </div>
 
-                    <div id="profile-tags-container" class="flex flex-wrap gap-2 pt-4 mt-6 border-t border-[#232838]">
-                        <!-- Tags rendered by JS -->
-                    </div>
+                    <div id="profile-tags-container" class="flex flex-wrap gap-2 pt-4 mt-6 border-t border-[#232838]"></div>
                 </div>
 
                 <!-- Anniversary / D-Day Card -->
@@ -259,9 +257,7 @@
                                 <span class="text-[#FF2E4D]">❤️</span> 기념일 & 디데이
                             </h3>
                         </div>
-                        <div id="dday-container" class="space-y-3">
-                            <!-- D-Days rendered by JS -->
-                        </div>
+                        <div id="dday-container" class="space-y-3"></div>
                     </div>
                 </div>
             </div>
@@ -279,9 +275,7 @@
                             <i class="fa-solid fa-pen-to-square"></i>
                         </button>
                     </div>
-                    <ul id="notice-list" class="space-y-3 flex-grow">
-                        <!-- JS dynamic notices -->
-                    </ul>
+                    <ul id="notice-list" class="space-y-3 flex-grow"></ul>
                 </div>
             </section>
 
@@ -296,9 +290,7 @@
                             <i class="fa-solid fa-pen-to-square"></i>
                         </button>
                     </div>
-                    <div id="schedule-list" class="space-y-2.5 flex-grow">
-                        <!-- JS dynamic schedule -->
-                    </div>
+                    <div id="schedule-list" class="space-y-2.5 flex-grow"></div>
                 </div>
             </section>
         </div>
@@ -317,9 +309,7 @@
                     </button>
                 </div>
 
-                <div id="bangsell-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-                    <!-- JS Dynamic Bangsell Rendering -->
-                </div>
+                <div id="bangsell-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4"></div>
             </div>
         </section>
 
@@ -343,9 +333,7 @@
                         <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-[#8C9BAE]"></i>
                         <input type="text" id="song-search-input" class="w-full bg-[#0a0b10] border border-[#232838] text-white text-sm rounded-2xl pl-11 pr-4 py-3 outline-none focus:border-[#B10E1E] transition-colors" placeholder="곡 제목, 가수, 카테고리 검색...">
                     </div>
-                    <div id="song-genre-tabs" class="flex flex-wrap gap-1.5 overflow-x-auto pb-1">
-                        <!-- JS dynamic category tabs -->
-                    </div>
+                    <div id="song-genre-tabs" class="flex flex-wrap gap-1.5 overflow-x-auto pb-1"></div>
                 </div>
 
                 <!-- Songs Table/List -->
@@ -360,9 +348,7 @@
                                     <th class="p-3.5 text-right pr-5">숙련도</th>
                                 </tr>
                             </thead>
-                            <tbody id="songbook-list-body" class="divide-y divide-[#232838]/60 text-sm">
-                                <!-- JS Dynamic songs -->
-                            </tbody>
+                            <tbody id="songbook-list-body" class="divide-y divide-[#232838]/60 text-sm"></tbody>
                         </table>
                     </div>
                 </div>
@@ -389,26 +375,32 @@
                     <input type="text" id="upbo-search-input" class="w-full bg-[#0a0b10] border border-[#232838] text-white text-sm rounded-2xl pl-11 pr-4 py-3 outline-none focus:border-[#B10E1E] transition-colors" placeholder="설령이 닉네임 또는 SOOP ID 검색...">
                 </div>
 
-                <!-- Karma Grid Container -->
-                <div id="upbo-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-                    <!-- JS Dynamic Upbo User Cards -->
-                </div>
+                <div id="upbo-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4"></div>
             </div>
         </section>
 
     </main>
 
-    <!-- Admin Password Modal -->
+    <!-- Admin Authentication Modal (Email/Password Firebase Auth) -->
     <div id="admin-login-modal" class="fixed inset-0 z-[110] flex items-center justify-center bg-black/75 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300">
         <div class="glow-card rounded-3xl w-11/12 max-w-sm p-6 transform scale-95 transition-all duration-300 border border-[#B10E1E]">
             <h3 class="text-xl font-bold text-white mb-2 flex items-center gap-2">
-                <i class="fa-solid fa-lock text-[#FF2E4D]"></i> 관리자 로그인
+                <i class="fa-solid fa-lock text-[#FF2E4D]"></i> 관리자 인증
             </h3>
-            <p class="text-xs text-[#8C9BAE] mb-4">설이 매니저 비밀번호를 입력해주세요.</p>
-            <input type="password" id="admin-pin-input" class="w-full bg-[#0a0b10] border border-[#232838] text-white text-center rounded-2xl p-3 mb-4 outline-none focus:border-[#B10E1E] font-bold text-lg tracking-widest" placeholder="PIN 입력">
+            <p class="text-xs text-[#8C9BAE] mb-4">Firebase 등록 이메일 및 비밀번호를 입력해주세요.</p>
+            <div class="space-y-3 mb-4">
+                <div>
+                    <label class="block text-[11px] font-bold text-[#8C9BAE] mb-1">이메일</label>
+                    <input type="email" id="admin-email-input" class="w-full bg-[#0a0b10] border border-[#232838] text-white rounded-2xl p-3 outline-none focus:border-[#B10E1E] text-xs" placeholder="등록한 이메일 주소">
+                </div>
+                <div>
+                    <label class="block text-[11px] font-bold text-[#8C9BAE] mb-1">비밀번호</label>
+                    <input type="password" id="admin-password-input" class="w-full bg-[#0a0b10] border border-[#232838] text-white rounded-2xl p-3 outline-none focus:border-[#B10E1E] text-xs" placeholder="비밀번호">
+                </div>
+            </div>
             <div class="flex justify-end gap-2">
                 <button id="close-admin-login-btn" class="px-4 py-2 rounded-xl bg-[#232838] text-white text-xs font-bold hover:bg-[#2c3348] transition-colors">취소</button>
-                <button id="submit-admin-pin-btn" class="px-5 py-2 rounded-xl bg-[#B10E1E] text-white text-xs font-bold hover:bg-[#FF2E4D] transition-colors">확인</button>
+                <button id="submit-admin-pin-btn" class="px-5 py-2 rounded-xl bg-[#B10E1E] text-white text-xs font-bold hover:bg-[#FF2E4D] transition-colors">로그인</button>
             </div>
         </div>
     </div>
@@ -631,7 +623,7 @@
         <div class="max-w-md w-11/12 text-center relative p-2" onclick="event.stopPropagation()">
             <button id="close-lightbox-btn" class="absolute -top-10 right-0 text-white hover:text-[#FF2E4D] text-2xl"><i class="fa-solid fa-xmark"></i></button>
             <div class="p-2 rounded-2xl bg-[#12141d] border border-[#232838] shadow-2xl png-bg-pattern inline-block max-w-full">
-                <img id="lightbox-img" src="" class="max-h-[75vh] mx-auto rounded-xl object-contain">
+                <img id="lightbox-img" src="" class="max-h-[75vh] mx-auto rounded-xl object-contain" alt="확대 이미지">
             </div>
             <h3 id="lightbox-title" class="text-white text-base font-bold mt-4"></h3>
         </div>
@@ -655,7 +647,7 @@
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, doc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
         /* Firebase Configuration */
@@ -724,7 +716,6 @@
             { id: "", nickname: "다크크림슨", items: [{ name: "지정 의상 방셀", count: 1 }] }
         ];
 
-        /* Global States */
         let globalProfileData = {};
         let globalNoticeData = [];
         let globalScheduleData = [];
@@ -749,7 +740,7 @@
             try { localStorage.setItem('seori_' + key, JSON.stringify(val)); } catch(e){}
         }
 
-        /* Image File Compression Helper (Prevents Firestore 1MB Payload Limit Error) */
+        /* Image File Compression Helper */
         function compressImageFile(file, maxWidth, quality, callback) {
             const reader = new FileReader();
             reader.onload = (e) => {
@@ -789,7 +780,6 @@
             const src = (raw && typeof raw === 'object' && raw !== null) ? raw : defaultProfileData;
             let bannerUrl = typeof src.bannerUrl === 'string' && src.bannerUrl ? src.bannerUrl : defaultProfileData.bannerUrl;
             
-            // 기존에 캐시/저장되어 있던 어두운 배너 URL을 화려한 선명 컬러 배너로 자동 변경
             if (bannerUrl.includes('photo-1518709268805-4e9042af9f23')) {
                 bannerUrl = VIVID_BANNER_URL;
             }
@@ -810,12 +800,7 @@
                 })).filter(d => d.title !== '');
             }
 
-            return {
-                bannerUrl,
-                introText,
-                tags,
-                ddays
-            };
+            return { bannerUrl, introText, tags, ddays };
         }
 
         async function syncDataToFirestore(key, value) {
@@ -835,7 +820,10 @@
 
             setStorage(key, value);
 
-            if (!isAuthReady) return;
+            if (!isAdminMode) {
+                console.warn("Write permission is restricted to authenticated admins.");
+                return;
+            }
 
             try {
                 const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'siteData', 'mainDoc');
@@ -850,6 +838,7 @@
                 await setDoc(docRef, fullPayload);
             } catch (err) {
                 console.error("Firestore sync error:", err);
+                showToast("데이터 저장 중 오류가 발생했습니다.");
             }
         }
 
@@ -866,7 +855,7 @@
                     if (data.upbo) { globalUpboData = sanitizeData(data.upbo); setStorage('upbo', globalUpboData); }
                     
                     renderAllViews();
-                } else {
+                } else if (isAdminMode) {
                     const initialPayload = sanitizeData({
                         profile: getCleanProfileData(globalProfileData),
                         notice: globalNoticeData,
@@ -1095,14 +1084,35 @@
                     else el.classList.add('hidden');
                 }
             });
+
+            const lockNav = document.getElementById('nav-admin-login-btn');
+            const lockMobile = document.getElementById('mobile-admin-login-btn');
+            if (lockNav) {
+                lockNav.innerHTML = isAdminMode ? `<i class="fa-solid fa-lock-open text-[#FF2E4D]"></i>` : `<i class="fa-solid fa-lock"></i>`;
+                lockNav.title = isAdminMode ? "관리자 로그아웃" : "관리자 로그인";
+            }
+            if (lockMobile) {
+                lockMobile.innerHTML = isAdminMode ? `<i class="fa-solid fa-lock-open text-[#FF2E4D] text-sm"></i>` : `<i class="fa-solid fa-lock text-sm"></i>`;
+            }
         }
 
+        // Firebase Auth Observer
+        onAuthStateChanged(auth, (user) => {
+            if (user && !user.isAnonymous) {
+                isAdminMode = true;
+            } else {
+                isAdminMode = false;
+            }
+            isAuthReady = true;
+            updateAdminStateView();
+        });
+
+        // Event Listener Wiring
         function setupEventListeners() {
-            // Admin Pin Login Modal
-            document.getElementById('nav-admin-login-btn')?.addEventListener('click', openAdminModal);
-            document.getElementById('mobile-admin-login-btn')?.addEventListener('click', openAdminModal);
+            document.getElementById('nav-admin-login-btn')?.addEventListener('click', handleAdminAuthButtonClick);
+            document.getElementById('mobile-admin-login-btn')?.addEventListener('click', handleAdminAuthButtonClick);
             document.getElementById('close-admin-login-btn')?.addEventListener('click', closeAdminModal);
-            document.getElementById('submit-admin-pin-btn')?.addEventListener('click', checkAdminPin);
+            document.getElementById('submit-admin-pin-btn')?.addEventListener('click', performAdminLogin);
 
             // Profile Edit
             document.getElementById('admin-profile-edit-btn')?.addEventListener('click', openProfileModal);
@@ -1177,27 +1187,46 @@
             }
         }
 
-        // Admin PIN Logic
-        function openAdminModal() {
+        async function handleAdminAuthButtonClick() {
             if (isAdminMode) {
-                isAdminMode = false;
-                updateAdminStateView();
-                showToast("관리자 모드가 해제되었습니다.");
+                try {
+                    await signOut(auth);
+                    isAdminMode = false;
+                    updateAdminStateView();
+                    showToast("로그아웃 되었습니다.");
+                } catch (err) {
+                    console.error("Signout error:", err);
+                }
                 return;
             }
             showModal('admin-login-modal');
         }
+
         function closeAdminModal() { hideModal('admin-login-modal'); }
-        function checkAdminPin() {
-            const input = document.getElementById('admin-pin-input');
-            if (input && input.value === '12345679') {
+
+        async function performAdminLogin() {
+            const email = document.getElementById('admin-email-input').value.trim();
+            const password = document.getElementById('admin-password-input').value;
+
+            if (!email || !password) {
+                showToast("이메일과 비밀번호를 모두 입력해주세요.");
+                return;
+            }
+
+            try {
+                await signInWithEmailAndPassword(auth, email, password);
                 isAdminMode = true;
                 updateAdminStateView();
                 closeAdminModal();
-                input.value = '';
-                showToast("관리자 로그인 성공! ❤️");
-            } else {
-                showToast("비밀번호가 올바르지 않습니다.");
+                document.getElementById('admin-email-input').value = '';
+                document.getElementById('admin-password-input').value = '';
+                showToast("관리자로 정식 인증되었습니다! ❤️");
+            } catch (error) {
+                console.error("Firebase auth login error:", error);
+                let msg = "로그인 실패: 이메일 또는 비밀번호를 확인해주세요.";
+                if (error.code === 'auth/invalid-email') msg = "유효하지 않은 이메일 형식입니다.";
+                else if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password' || error.code === 'auth/invalid-credential') msg = "이메일 또는 비밀번호가 일치하지 않습니다.";
+                showToast(msg);
             }
         }
 
@@ -1407,8 +1436,8 @@
                 <div class="flex items-center justify-between p-2.5 bg-[#0a0b10] border border-[#232838] rounded-xl text-xs">
                     <span class="text-white font-bold">${item.name} (${item.count}개)</span>
                     <div class="flex items-center gap-2">
-                        <button class="px-2 py-0.5 bg-[#232838] hover:bg-[#2c3348] text-white rounded-md" onclick="window.changeUpboCount(${idx}, 1)">+</button>
-                        <button class="px-2 py-0.5 bg-[#232838] hover:bg-[#2c3348] text-white rounded-md" onclick="window.changeUpboCount(${idx}, -1)">-</button>
+                        <button class="px-2 py-0.5 bg-[#232838] hover:bg-[#2c3348] text-white rounded-md font-bold" onclick="window.changeUpboCount(${idx}, 1)">+</button>
+                        <button class="px-2 py-0.5 bg-[#232838] hover:bg-[#2c3348] text-white rounded-md font-bold" onclick="window.changeUpboCount(${idx}, -1)">-</button>
                         <button class="text-red-400 hover:text-red-300 ml-2" onclick="window.removeUpboItem(${idx})"><i class="fa-solid fa-trash"></i></button>
                     </div>
                 </div>
@@ -1441,7 +1470,6 @@
             showToast("업보 사용자가 삭제되었습니다.");
         }
 
-        // Window Scope Exports for Inline Events
         window.showLightbox = function(url, title) {
             document.getElementById('lightbox-img').src = url;
             document.getElementById('lightbox-title').textContent = title;
@@ -1487,72 +1515,70 @@
             renderNoticeEditList();
             renderNoticeView();
         };
+
         window.removeBangsellItem = function(idx) {
             globalBangsellData.splice(idx, 1);
             syncDataToFirestore('bangsell', globalBangsellData);
             renderBangsellEditList();
             renderBangsellView();
         };
+
         window.removeSongItem = function(idx) {
             globalSongbookData.splice(idx, 1);
             syncDataToFirestore('songbook', globalSongbookData);
             renderSongEditList();
             renderSongbookView();
         };
-        window.changeUpboCount = function(idx, delta) {
+
+        window.changeUpboCount = function(itemIdx, delta) {
             if (currentEditingUpboUserIndex === null) return;
-            const items = globalUpboData[currentEditingUpboUserIndex].items;
-            if (items[idx]) {
-                items[idx].count += delta;
-                if (items[idx].count <= 0) items.splice(idx, 1);
+            const user = globalUpboData[currentEditingUpboUserIndex];
+            if (!user || !user.items || !user.items[itemIdx]) return;
+            user.items[itemIdx].count += delta;
+            if (user.items[itemIdx].count <= 0) {
+                user.items.splice(itemIdx, 1);
             }
             syncDataToFirestore('upbo', globalUpboData);
             renderUpboEditItems();
             renderUpboView();
         };
-        window.removeUpboItem = function(idx) {
+
+        window.removeUpboItem = function(itemIdx) {
             if (currentEditingUpboUserIndex === null) return;
-            globalUpboData[currentEditingUpboUserIndex].items.splice(idx, 1);
+            const user = globalUpboData[currentEditingUpboUserIndex];
+            if (!user || !user.items) return;
+            user.items.splice(itemIdx, 1);
             syncDataToFirestore('upbo', globalUpboData);
             renderUpboEditItems();
             renderUpboView();
         };
 
-        function generateParticles() {
+        // Background Particle Generator
+        function initParticles() {
             const container = document.getElementById('heart-bg-effects');
             if (!container) return;
-            const emojis = ['❤️', '👻', '🤍', '💖', '✨'];
+            const icons = ['❤️', '👻', '✨', '💖'];
             setInterval(() => {
-                const el = document.createElement('div');
-                el.className = 'heart-particle text-sm select-none';
-                el.style.left = Math.random() * 100 + 'vw';
-                el.style.top = '-20px';
-                el.style.animationDuration = (Math.random() * 5 + 5) + 's';
-                el.innerText = emojis[Math.floor(Math.random() * emojis.length)];
-                container.appendChild(el);
-                setTimeout(() => el.remove(), 10000);
-            }, 600);
+                if (document.hidden) return;
+                const p = document.createElement('div');
+                p.className = 'heart-particle';
+                p.style.left = Math.random() * 100 + 'vw';
+                p.style.animationDuration = (Math.random() * 4 + 6) + 's';
+                p.style.fontSize = (Math.random() * 12 + 10) + 'px';
+                p.textContent = icons[Math.floor(Math.random() * icons.length)];
+                container.appendChild(p);
+                setTimeout(() => p.remove(), 10000);
+            }, 1600);
         }
 
-        // Initialize App
-        window.onload = async function() {
+        /* Application Initialization */
+        window.addEventListener('DOMContentLoaded', () => {
             loadLocalData();
+            setupFirestoreListener();
             renderAllViews();
             setupEventListeners();
-            generateParticles();
-
-            try {
-                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-                    await signInWithCustomToken(auth, __initial_auth_token);
-                } else {
-                    await signInAnonymously(auth);
-                }
-                isAuthReady = true;
-                setupFirestoreListener();
-            } catch (e) {
-                console.warn("Auth initialization fallback to local:", e);
-            }
-        };
+            initParticles();
+        });
     </script>
 </body>
 </html>
